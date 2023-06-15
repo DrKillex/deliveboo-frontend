@@ -1,6 +1,6 @@
 <script>
 export default {
-    name: 'AppRestaurant',
+    name: 'FormRestaurant',
     data() {
         return {
             restaurant: '',
