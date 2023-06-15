@@ -7,7 +7,7 @@ export default {
 
 <template>
     <div>
-        <h1>Hello <span>Classe 89</span></h1>
+        <h1 class="container">Hello <span>Classe 89</span></h1>
     </div>
 </template>
 

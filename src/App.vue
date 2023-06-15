@@ -1,5 +1,6 @@
 <script>
 import HelloApp from './components/HelloApp.vue';
+import axios from 'axios';
 export default {
   name:'App',
   components: {
