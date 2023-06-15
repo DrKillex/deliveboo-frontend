@@ -1,5 +1,6 @@
 @use '_partial/reset' as *;
 @use '_partial/variables' as *;
+@import "bootstrap/scss/bootstrap";
 
 body {
     background-color: white;
