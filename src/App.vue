@@ -1,16 +1,19 @@
 <script>
 import HelloApp from './components/HelloApp.vue';
+import AppRestaurant from './components/AppRestaurant.vue';
 import axios from 'axios';
 export default {
   name:'App',
   components: {
-    HelloApp
+    HelloApp,
+    AppRestaurant
   }
 }
 </script>
 
 <template>
   <HelloApp />
+  <AppRestaurant />
 </template>
 
 
