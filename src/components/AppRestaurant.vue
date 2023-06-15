@@ -97,7 +97,7 @@ export default {
                 </div>
                 <div class="mb-3">
                     <label for="user_id" class="form-label">User id:</label>
-                    <input type="text" class="form-control" id="user_id" name="user_id" placeholder="Inserisci user id"
+                    <input type="number" class="form-control" id="user_id" name="user_id" placeholder="Inserisci user id"
                         v-model="formData.user_id">
                 </div>
                 <button class="btn btn-primary">Aggiungi</button>
