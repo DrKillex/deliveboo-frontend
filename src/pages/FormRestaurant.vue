@@ -36,7 +36,7 @@ export default {
 
                 user_id: this.formData.user_id
             };
-            axios.post(this.store.apiBaseUrl + this.store.apiUrls, data)
+            axios.post(this.store.apiBaseUrl + this.store.apiUrls.restaurants, data)
                 .then((response) => {
                     if (response.status === 201) {
                         // this.restaurant.push(response.data)
