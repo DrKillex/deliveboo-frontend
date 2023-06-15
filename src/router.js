@@ -2,6 +2,7 @@ import {createRouter, createWebHistory} from 'vue-router';
 import AppHome from './pages/AppHome.vue';
 import AppAbout from './pages/AppAbout.vue';
 import AppRestaurants from './pages/AppRestaurants.vue';
+import FormRestaurant from './pages/FormRestaurant.vue';
 import PageNotFound from './pages/PageNotFound.vue';
 const router = createRouter({
     history: createWebHistory(),
@@ -21,11 +22,11 @@ const router = createRouter({
             name: 'restaurants',
             component: AppRestaurants
         },
-        // {
-        //     path: '',
-        //     name: '',
-        //     component: 
-        // },
+        {
+            path: '/formrestaurant',
+            name: 'formrestaurant',
+            component: FormRestaurant
+        },
         // {
         //     path: '',
         //     name: '',
