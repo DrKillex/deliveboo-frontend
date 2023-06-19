@@ -32,7 +32,7 @@ export default {
         <h1>Ristoranti</h1>
         <div class="d-flex gap-4 flex-wrap">
             <div v-for="restaurant in restaurants" class="card" style="width: 18rem;">
-                <img :src=restaurant.img class="card-img-top" alt="...">
+                <img :src="restaurant.img" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">{{ restaurant.name }}</h5>
                     <p class="card-text">{{ restaurant.description }}</p>
