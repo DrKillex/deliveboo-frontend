@@ -10,6 +10,8 @@ export default {
             store,
             restaurants: "",
             categories: "",
+            isActive: false,
+            categoriesId: ""
         }
     },
     methods: {
@@ -31,8 +33,18 @@ export default {
                     //     }
                     // }
                 }
-            )
-        }
+                )
+        },
+        addCategory() {
+            for (let i = 0; i < this.categories.length; i++) {
+                const element = this.categories[i].id;
+                console.log(element);
+            }
+        },
+        myFilter() {
+            this.isActive = !this.isActive;;
+            console.log('we')
+        },
     },
     created() {
         this.getData();
@@ -44,7 +56,12 @@ export default {
 <template>
     <section class="container">
         <h1>Ristoranti</h1>
-        <div v-for="category in categories">{{ category.name }}</div>
+        <div>
+            <ul class="list-unstyled text-center">
+                <li v-on:click="myFilter" v-bind:class="{ active: isActive }" class="btn btn-primary m-3"
+                    v-for="category in categories" @click="addCategory"> {{ category.name }}</li>
+            </ul>
+        </div>
         <div class="d-flex gap-4 flex-wrap">
             <div v-for="restaurant in restaurants" class="card" style="width: 18rem;">
                 <img :src="restaurant.img" class="card-img-top" alt="...">
@@ -66,4 +83,9 @@ export default {
 </template>
 
 
-<style scoped></style>
+<style lang="scss" scoped>
+.active {
+    background-color: rgb(2, 37, 26);
+    font-weight: bold;
+}
+</style>
