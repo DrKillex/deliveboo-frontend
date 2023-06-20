@@ -40,28 +40,40 @@ export default {
                 this.selectedCategories.splice(removeCategory, 1)
             } else {
                 this.selectedCategories.push(id)
-            }           
+            }
         },
-        search(){            
-            if(this.selectedCategories.length>0){
-                return this.restaurants.filter((restaurant) => {
-                    console.log(restaurant.name)
-                    let control=[]
-                    let categoriesId=[]
-                    for (let index = 0; index < restaurant.categories.length; index++) {
-                        categoriesId.push(restaurant.categories[index].id)
-                    }
-                    for (let index = 0; index < this.selectedCategories.length; index++) {
-                        if(categoriesId.includes(this.selectedCategories[index])){
-                            control.push(1)
-                        } else {
-                            control.push(0)
-                        }
-                    }
-                    if(!control.includes(0)){
-                        return restaurant
-                    }         
-                })
+        search() {
+            if (this.selectedCategories.length > 0) {
+                // return this.restaurants.filter((restaurant) => {
+                //     console.log(restaurant.name)
+                //     let control=[]
+                //     let categoriesId=[]
+                //     for (let index = 0; index < restaurant.categories.length; index++) {
+                //         categoriesId.push(restaurant.categories[index].id)
+                //     }
+                //     for (let index = 0; index < this.selectedCategories.length; index++) {
+                //         if(categoriesId.includes(this.selectedCategories[index])){
+                //             control.push(1)
+                //         } else {
+                //             control.push(0)
+                //         }
+                //     }
+                //     if(!control.includes(0)){
+                //         return restaurant
+                //     }         
+                //}
+                // )
+                return this.restaurants.filter((res) => {
+                    // let categoriesId=[]
+                    //  for (let index = 0; index < res.categories.length; index++) {
+                    //      categoriesId.push(res.categories[index].id)
+                    //  }
+                    if (this.selectedCategories.every((cat) => res.categories.map(categories => categories.id).includes(cat))) {
+                        return true
+                    } else {
+                        return false
+                    }}
+)
             } else {
                 return this.restaurants
             }
