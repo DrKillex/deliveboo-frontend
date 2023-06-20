@@ -10,15 +10,14 @@ export default {
             store,
             restaurants: "",
             categories: "",
-            isActive: false,
-            categoriesId: ""
+            categoriesId: "",
+            selectedCategories: []
         }
     },
     methods: {
         getData() {
             axios.get(this.store.apiBaseUrl + this.store.apiUrls.restaurants)
                 .then((response) => {
-                    console.log(response)
                     this.restaurants = response.data.results.restaurants
                     this.categories = response.data.results.categories
                     // let test=[]
@@ -35,15 +34,37 @@ export default {
                 }
                 )
         },
-        addCategory() {
-            for (let i = 0; i < this.categories.length; i++) {
-                const element = this.categories[i].id;
-                console.log(element);
-            }
+        addCategory(id) {
+            if (this.selectedCategories.includes(id)) {
+                const removeCategory = this.selectedCategories.indexOf(id)
+                this.selectedCategories.splice(removeCategory, 1)
+            } else {
+                this.selectedCategories.push(id)
+            }           
         },
-        myFilter() {
-            this.isActive = !this.isActive;;
-            console.log('we')
+        search(){            
+            if(this.selectedCategories.length>0){
+                return this.restaurants.filter((restaurant) => {
+                    console.log(restaurant.name)
+                    let control=[]
+                    let categoriesId=[]
+                    for (let index = 0; index < restaurant.categories.length; index++) {
+                        categoriesId.push(restaurant.categories[index].id)
+                    }
+                    for (let index = 0; index < this.selectedCategories.length; index++) {
+                        if(categoriesId.includes(this.selectedCategories[index])){
+                            control.push(1)
+                        } else {
+                            control.push(0)
+                        }
+                    }
+                    if(!control.includes(0)){
+                        return restaurant
+                    }         
+                })
+            } else {
+                return this.restaurants
+            }
         },
     },
     created() {
@@ -58,12 +79,13 @@ export default {
         <h1>Ristoranti</h1>
         <div>
             <ul class="list-unstyled text-center">
-                <li v-on:click="myFilter" v-bind:class="{ active: isActive }" class="btn btn-primary m-3"
-                    v-for="category in categories" @click="addCategory"> {{ category.name }}</li>
+                <li v-on:click="myFilter" v-bind:class="{ active: selectedCategories.includes(category.id) }"
+                    class="btn btn-primary m-3" v-for="category in categories" @click="addCategory(category.id)"> {{
+                        category.name }}</li>
             </ul>
         </div>
         <div class="d-flex gap-4 flex-wrap">
-            <div v-for="restaurant in restaurants" class="card" style="width: 18rem;">
+            <div v-for="restaurant in search()" class="card" style="width: 18rem;">
                 <img :src="restaurant.img" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">{{ restaurant.name }}</h5>
