@@ -64,16 +64,12 @@ export default {
                 //}
                 // )
                 return this.restaurants.filter((res) => {
-                    // let categoriesId=[]
-                    //  for (let index = 0; index < res.categories.length; index++) {
-                    //      categoriesId.push(res.categories[index].id)
-                    //  }
                     if (this.selectedCategories.every((cat) => res.categories.map(categories => categories.id).includes(cat))) {
                         return true
                     } else {
                         return false
                     }}
-)
+                    )
             } else {
                 return this.restaurants
             }
