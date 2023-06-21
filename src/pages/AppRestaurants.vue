@@ -11,6 +11,7 @@ export default {
             restaurants: "",
             categories: "",
             categoriesId: "",
+            searchBarText: "",
             selectedCategories: []
         }
     },
@@ -43,33 +44,50 @@ export default {
             }
         },
         search() {
-            if (this.selectedCategories.length > 0) {
-                // return this.restaurants.filter((restaurant) => {
-                //     console.log(restaurant.name)
-                //     let control=[]
-                //     let categoriesId=[]
-                //     for (let index = 0; index < restaurant.categories.length; index++) {
-                //         categoriesId.push(restaurant.categories[index].id)
-                //     }
-                //     for (let index = 0; index < this.selectedCategories.length; index++) {
-                //         if(categoriesId.includes(this.selectedCategories[index])){
-                //             control.push(1)
-                //         } else {
-                //             control.push(0)
-                //         }
-                //     }
-                //     if(!control.includes(0)){
-                //         return restaurant
-                //     }         
-                //}
-                // )
+            // if (this.searchBarText.trim() !== '') {
+            //     return this.restaurants.filter(res => res.name.toLowerCase().includes(this.searchBarText.toLowerCase()))
+            // } else if (this.selectedCategories.length > 0) {
+            //     // return this.restaurants.filter((restaurant) => {
+            //     //     console.log(restaurant.name)
+            //     //     let control=[]
+            //     //     let categoriesId=[]
+            //     //     for (let index = 0; index < restaurant.categories.length; index++) {
+            //     //         categoriesId.push(restaurant.categories[index].id)
+            //     //     }
+            //     //     for (let index = 0; index < this.selectedCategories.length; index++) {
+            //     //         if(categoriesId.includes(this.selectedCategories[index])){
+            //     //             control.push(1)
+            //     //         } else {
+            //     //             control.push(0)
+            //     //         }
+            //     //     }
+            //     //     if(!control.includes(0)){
+            //     //         return restaurant
+            //     //     }         
+            //     //}
+            //     // )
+            //     return this.restaurants.filter((res) => {
+            //         if (this.selectedCategories.every((cat) => res.categories.map(categories => categories.id).includes(cat))) {
+            //             return res
+            //         }
+            //     }
+            //     )
+            // } else {
+            //     return this.restaurants
+            // }
+            if (this.searchBarText.trim() !== '' && this.selectedCategories.length > 0) {
                 return this.restaurants.filter((res) => {
                     if (this.selectedCategories.every((cat) => res.categories.map(categories => categories.id).includes(cat))) {
-                        return true
-                    } else {
-                        return false
-                    }}
-                    )
+                        return res
+                    }
+                }).filter(res => res.name.toLowerCase().includes(this.searchBarText.toLowerCase()))
+            } else if (this.searchBarText.trim() !== '') {
+                return this.restaurants.filter(res => res.name.toLowerCase().includes(this.searchBarText.toLowerCase()))
+            } else if (this.selectedCategories.length > 0) {
+                return this.restaurants.filter((res) => {
+                    if (this.selectedCategories.every((cat) => res.categories.map(categories => categories.id).includes(cat))) {
+                        return res
+                    }})
             } else {
                 return this.restaurants
             }
@@ -85,6 +103,12 @@ export default {
 <template>
     <section class="container">
         <h1>Ristoranti</h1>
+        <div>
+            <input type="text" v-model="searchBarText" @change="search" list="restaurants">
+            <datalist id="restaurants">
+                <option v-for="restaurant in search()" :value="restaurant.name"></option>
+            </datalist>
+        </div>
         <div>
             <ul class="list-unstyled text-center">
                 <li v-on:click="myFilter" v-bind:class="{ active: selectedCategories.includes(category.id) }"
