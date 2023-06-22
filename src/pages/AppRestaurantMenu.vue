@@ -1,5 +1,6 @@
 <script>
 import axios from 'axios';
+import AppCard from '../components/AppCard.vue';
 import { store } from '../store';
     export default {
         name: "AppRestaurantMenu",
@@ -7,6 +8,9 @@ import { store } from '../store';
             return {
                 store,
             }
+        },
+        components: {
+            AppCard
         },
         methods: {
         getMenu() {
@@ -29,10 +33,8 @@ import { store } from '../store';
 
 
 <template>
-    <section>
-        <div v-for="product in store.products">
-            {{ product.name }}
-        </div>
+    <section  class="d-flex gap-4 flex-wrap">
+            <AppCard v-for="product in store.products" :data="product" />
     </section>
 </template>
 
