@@ -1,7 +1,7 @@
 import {createRouter, createWebHistory} from 'vue-router';
 import AppHome from './pages/AppHome.vue';
 import AppAbout from './pages/AppAbout.vue';
-import AppRestaurants from './pages/AppRestaurants.vue';
+
 import AppRestaurantMenu from './pages/AppRestaurantMenu.vue';
 import PageNotFound from './pages/PageNotFound.vue';
 const router = createRouter({
@@ -16,11 +16,6 @@ const router = createRouter({
             path: '/about',
             name: 'about',
             component: AppAbout
-        },
-        {
-            path: '/restaurants',
-            name: 'restaurants',
-            component: AppRestaurants
         },
         {
             path: '/menu/:slug',
