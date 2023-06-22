@@ -87,6 +87,10 @@ export default {
                 return this.store.restaurants
             }
         },
+        getIdRedirect(who){
+            this.store.selectedRestaurant = who
+            this.$router.push({name: 'menu', params:{slug: who.slug}})
+        }
     },
     created() {
         this.getData();
@@ -123,7 +127,7 @@ export default {
                     <div>Email: {{ restaurant.email }} </div>
                     <div>Orario: {{ restaurant.opening_hours }} </div>
                     <div>Indirizzo: {{ restaurant.address }} </div>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                    <button @click="getIdRedirect(restaurant)">Go somewhere</button>
                 </div>
             </div>
 

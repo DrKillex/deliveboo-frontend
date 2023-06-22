@@ -2,7 +2,7 @@ import {createRouter, createWebHistory} from 'vue-router';
 import AppHome from './pages/AppHome.vue';
 import AppAbout from './pages/AppAbout.vue';
 import AppRestaurants from './pages/AppRestaurants.vue';
-import FormRestaurant from './pages/FormRestaurant.vue';
+import AppRestaurantMenu from './pages/AppRestaurantMenu.vue';
 import PageNotFound from './pages/PageNotFound.vue';
 const router = createRouter({
     history: createWebHistory(),
@@ -23,9 +23,9 @@ const router = createRouter({
             component: AppRestaurants
         },
         {
-            path: '/formrestaurant',
-            name: 'formrestaurant',
-            component: FormRestaurant
+            path: '/menu/:slug',
+            name: 'menu',
+            component: AppRestaurantMenu
         },
         // {
         //     path: '',
