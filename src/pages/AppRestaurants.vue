@@ -8,19 +8,14 @@ export default {
     data() {
         return {
             store,
-            restaurants: "",
-            categories: "",
-            categoriesId: "",
-            searchBarText: "",
-            selectedCategories: []
         }
     },
     methods: {
         getData() {
             axios.get(this.store.apiBaseUrl + this.store.apiUrls.restaurants)
                 .then((response) => {
-                    this.restaurants = response.data.results.restaurants
-                    this.categories = response.data.results.categories
+                    this.store.restaurants = response.data.results.restaurants
+                    this.store.categories = response.data.results.categories
                     // let test=[]
                     // for (let i = 0; i < this.restaurants.length; i++) {
                     //     const category = this.restaurants[i].categories
@@ -36,11 +31,11 @@ export default {
                 )
         },
         addCategory(id) {
-            if (this.selectedCategories.includes(id)) {
-                const removeCategory = this.selectedCategories.indexOf(id)
-                this.selectedCategories.splice(removeCategory, 1)
+            if (this.store.selectedCategories.includes(id)) {
+                const removeCategory = this.store.selectedCategories.indexOf(id)
+                this.store.selectedCategories.splice(removeCategory, 1)
             } else {
-                this.selectedCategories.push(id)
+                this.store.selectedCategories.push(id)
             }
         },
         search() {
@@ -75,21 +70,21 @@ export default {
             // } else {
             //     return this.restaurants
             // }
-            if (this.searchBarText.trim() !== '' && this.selectedCategories.length > 0) {
-                return this.restaurants.filter((res) => {
-                    if (this.selectedCategories.every((cat) => res.categories.map(categories => categories.id).includes(cat))) {
+            if (this.store.searchBarText.trim() !== '' && this.store.selectedCategories.length > 0) {
+                return this.store.restaurants.filter((res) => {
+                    if (this.store.selectedCategories.every((cat) => res.categories.map(categories => categories.id).includes(cat))) {
                         return res
                     }
-                }).filter(res => res.name.toLowerCase().includes(this.searchBarText.toLowerCase()))
-            } else if (this.searchBarText.trim() !== '') {
-                return this.restaurants.filter(res => res.name.toLowerCase().includes(this.searchBarText.toLowerCase()))
-            } else if (this.selectedCategories.length > 0) {
-                return this.restaurants.filter((res) => {
-                    if (this.selectedCategories.every((cat) => res.categories.map(categories => categories.id).includes(cat))) {
+                }).filter(res => res.name.toLowerCase().includes(this.store.searchBarText.toLowerCase()))
+            } else if (this.store.searchBarText.trim() !== '') {
+                return this.store.restaurants.filter(res => res.name.toLowerCase().includes(this.store.searchBarText.toLowerCase()))
+            } else if (this.store.selectedCategories.length > 0) {
+                return this.store.restaurants.filter((res) => {
+                    if (this.store.selectedCategories.every((cat) => res.categories.map(categories => categories.id).includes(cat))) {
                         return res
                     }})
             } else {
-                return this.restaurants
+                return this.store.restaurants
             }
         },
     },
@@ -104,15 +99,15 @@ export default {
     <section class="container">
         <h1>Ristoranti</h1>
         <div>
-            <input type="text" v-model="searchBarText" @change="search" list="restaurants">
+            <input type="text" v-model="store.searchBarText" @change="search" list="restaurants">
             <datalist id="restaurants">
                 <option v-for="restaurant in search()" :value="restaurant.name"></option>
             </datalist>
         </div>
         <div>
             <ul class="list-unstyled text-center">
-                <li v-on:click="myFilter" v-bind:class="{ active: selectedCategories.includes(category.id) }"
-                    class="btn btn-primary m-3" v-for="category in categories" @click="addCategory(category.id)"> {{
+                <li v-on:click="myFilter" v-bind:class="{ active: store.selectedCategories.includes(category.id) }"
+                    class="btn btn-primary m-3" v-for="category in store.categories" @click="addCategory(category.id)"> {{
                         category.name }}</li>
             </ul>
         </div>
