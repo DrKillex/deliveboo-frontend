@@ -48,7 +48,7 @@ export default {
                 this.addFood(product)
                 localStorage.setItem("cart", JSON.stringify(this.store.cart))
                 console.log(localStorage.getItem("chosenReastaurant"),localStorage.getItem("cart"))
-            } else if (!localStorage.getItem("chosenReastaurant")==product.restaurant_id) {
+            } else if (localStorage.getItem("chosenReastaurant")!=product.restaurant_id) {
                 this.store.cartWarning=true
             } else {
                 this.addFood(product)
