@@ -33,7 +33,7 @@ import { store } from '../store';
 
 
 <template>
-    <section  class="d-flex gap-4 flex-wrap">
+    <section  class="d-flex gap-4 flex-wrap container">
             <AppCard v-for="product in store.products" :data="product" />
     </section>
 </template>
