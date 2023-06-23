@@ -31,7 +31,7 @@ export default {
 
 <template>
     <div>
-        <ul class="list-unstyled text-center">
+        <ul class="list-unstyled text-center d-flex flex-column">
                 <li v-bind:class="{ active: store.selectedCategories.includes(category.id) }"
                     class="btn btn-primary m-3" v-for="category in store.categories" @click="$emit('search'); addCategory(category.id)"> {{
                         category.name }}</li>

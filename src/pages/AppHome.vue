@@ -54,16 +54,18 @@ import axios from 'axios';
 
 
 <template>
-    <div>home</div>
-    <SearchBar  @searchText="search"/>
-    <section>
-        <div>
-            <SelectCategory @search="search"/>
-        </div>
-        <div class="d-flex gap-4 flex-wrap">
-            <AppCard v-for="restaurant in search()" :data="restaurant"/>
-        </div>
-    </section>
+    <main class="container">
+        <SearchBar  @searchText="search"/>
+        <section class="row">
+            <div class="col-2">
+                <SelectCategory @search="search"/>
+            </div>
+            <div class="d-flex gap-4 flex-wrap col-10">
+                <AppCard v-for="restaurant in search()" :data="restaurant"/>
+            </div>
+        </section>
+    </main>
+    
 </template>
 
 
