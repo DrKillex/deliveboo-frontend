@@ -12,6 +12,6 @@ export const store = reactive({
   categoriesId: [],
   searchBarText: "",
   selectedCategories: [],
-  products: []
+  products: [],
 }
 )
