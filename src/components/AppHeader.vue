@@ -23,7 +23,7 @@ import { store } from '../store';
             </router-link>
         </div>
         
-        <ul v-if="store.test===true" class="ms-auto list-unstyled d-flex gap-2">
+        <ul class="ms-auto list-unstyled d-flex gap-2">
             <li>
                 <a href="http://127.0.0.1:8000/login">hai gia un ristorante? Login</a>
             </li>
