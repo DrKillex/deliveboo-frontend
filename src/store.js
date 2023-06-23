@@ -13,5 +13,7 @@ export const store = reactive({
   searchBarText: "",
   selectedCategories: [],
   products: [],
+  cart: [],
+  cartWarning: false,
 }
 )
