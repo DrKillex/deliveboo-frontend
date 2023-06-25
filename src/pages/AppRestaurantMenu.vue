@@ -35,24 +35,23 @@ export default {
             localStorage.setItem("cart", JSON.stringify(this.store.cart))
             console.log(localStorage.getItem("chosenReastaurant") + '-----------', localStorage.getItem("cart") + '-----------')
         },
-        lessFood(food) {   
-            // da fixare
-            const newCart = this.store.cart.map((product) => {
-                if (product.id === food.id) {
-                    if (product.quantity==1){
-                        this.store.cart = this.store.cart.filter(product => product.id !== food.id)
+        lessFood(food) {
+            if (food.quantity == 1) {
+                this.removeFood(food)
+            } else {
+                const newCart = this.store.cart.map((product) => {
+                    if (product.id === food.id) {
+                            product.quantity -= 1 ///////////////////////fare cosi per tutti
+                        return product
                     } else {
-                        const productChange = food
-                        productChange.quantity -= 1                  
-                        return productChange  
-                    }                                    
-                } else {
-                    return product
-                }
-            })
-            this.store.cart = newCart
-            localStorage.setItem("cart", JSON.stringify(this.store.cart))
-            console.log(localStorage.getItem("chosenReastaurant") + '-----------', localStorage.getItem("cart") + '-----------')
+                        return product
+                    }
+                })
+                this.store.cart = newCart
+                localStorage.setItem("cart", JSON.stringify(this.store.cart))
+                console.log(localStorage.getItem("chosenReastaurant") + '-----------', localStorage.getItem("cart") + '-----------')
+            }
+
         },
         removeFood(food) {
             const index = this.store.cart.map(product => product.id).indexOf(food.id)
@@ -99,7 +98,7 @@ export default {
 <template>
     <section>
         <div class="container">
-            <table class="table" v-if="store.cart.length>0">
+            <table class="table" v-if="store.cart.length > 0">
                 <thead>
                     <tr>
                         <th scope="col">name</th>
