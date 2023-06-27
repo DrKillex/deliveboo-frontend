@@ -1,7 +1,7 @@
 import {createRouter, createWebHistory} from 'vue-router';
 import AppHome from './pages/AppHome.vue';
 import AppAbout from './pages/AppAbout.vue';
-
+import AppPayment from './pages/AppPayment.vue'
 import AppRestaurantMenu from './pages/AppRestaurantMenu.vue';
 import PageNotFound from './pages/PageNotFound.vue';
 const router = createRouter({
@@ -22,11 +22,11 @@ const router = createRouter({
             name: 'menu',
             component: AppRestaurantMenu
         },
-        // {
-        //     path: '',
-        //     name: '',
-        //     component: 
-        // },
+        {
+            path: '/payment',
+            name: 'payment',
+            component: AppPayment
+        },
         // {
         //     path: '',
         //     name: '',
