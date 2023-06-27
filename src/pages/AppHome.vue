@@ -4,11 +4,14 @@ import { store } from '../store';
 import AppCard from '../components/AppCard.vue';
 import SelectCategory from '../components/SelectCategory.vue';
 import SearchBar from '../components/SearchBar.vue';
+import AppJumbotron from '../components/AppJumbotron.vue';
+
 import axios from 'axios';
     export default {
         name: "AppHome",
         components: {
             AppCard,
+            AppJumbotron,
             SelectCategory,
             SearchBar
         },
@@ -54,8 +57,8 @@ import axios from 'axios';
 
 
 <template>
+    <AppJumbotron></AppJumbotron>
     <main class="container">
-        <SearchBar  @searchText="search"/>
         <section class="row">
             <div class="col-2">
                 <SelectCategory @search="search"/>
@@ -69,6 +72,5 @@ import axios from 'axios';
 </template>
 
 
-<style scoped>
-
+<style scoped lang="scss">
 </style>

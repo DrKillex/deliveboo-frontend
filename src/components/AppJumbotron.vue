@@ -1,0 +1,199 @@
+<script>
+import { store } from '../store';
+import SearchBar from './SearchBar.vue';
+
+
+export default {
+    name: "AppJumbotron",
+    components: {
+        SearchBar,
+    },
+    data() {
+        return {
+            store,
+        }
+    },
+}
+</script>
+
+
+<template>
+    <!-- Jumbotron -->
+    <section class="jumbotron">
+        <!-- Background Jumbotron -->
+        <div class="wave"></div>
+        <div class="plants"></div>
+         <!-- /Background Jumbotron -->
+         <!-- Jumbotron Content -->
+        <div class="jumbotron-content">
+            <!-- Carousel Autoplay -->
+            <div id="carouselExampleAutoplaying" class="carousel carousel-dark slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="container">
+                            <div class="row">
+                                <!-- column left-->
+                                <div class="col-md-6 col-sm-12">
+                                    <div class="column-content">
+                                        <div class="titles">
+                                            <h1>BLA BLA BLA</h1>
+                                            <h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis
+                                                necessitatibus quo praesentium? Cumque delectus, minus quo ullam accusantium
+                                                sunt praesentium in id commodi voluptate dolor. Consequuntur impedit placeat
+                                                sit hic.</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /column left-->
+                                <!-- column right -->
+                                <div class="col-md-6 col-sm-12">
+                                    <div class="column-content">
+                                        <img class="d-block w-100" src="../assets/scss/img/jumbotron_hamburger.png">
+                                    </div>
+                                </div>
+                                <!-- /column right -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="container">
+                            <div class="row">
+                                <!-- column left -->
+                                <div class="col-md-6 col-sm-12">
+                                    <div class="column-content">
+                                        <div class="titles">
+                                            <h1>BLA BLA BLA</h1>
+                                            <h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis
+                                                necessitatibus quo praesentium? Cumque delectus, minus quo ullam accusantium
+                                                sunt praesentium in id commodi voluptate dolor. Consequuntur impedit placeat
+                                                sit hic.</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /column left -->
+                                <!-- column right -->
+                                <div class="col-md-6 col-sm-12">
+                                    <div class="column-content">
+                                        <img class="d-block w-100" src="../assets/scss/img/sushi.png">
+                                    </div>
+                                </div>
+                                <!-- /column right -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="container">
+                            <div class="row">
+                                <!-- column left -->
+                                <div class="col-md-6 col-sm-12">
+                                    <div class="column-content">
+                                        <div class="titles">
+                                            <h1>BLA BLA BLA</h1>
+                                            <h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis
+                                                necessitatibus quo praesentium? Cumque delectus, minus quo ullam accusantium
+                                                sunt praesentium in id commodi voluptate dolor. Consequuntur impedit placeat
+                                                sit hic.</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /column left -->
+                                <!-- column right -->
+                                <div class="col-md-6 col-sm-12">
+                                    <div class="column-content">
+                                        <img class="d-block w-100" src="../assets/scss/img/pizza.png">
+                                    </div>
+                                </div>
+                                <!-- /column right -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Buttons prev next -->
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Precedente</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Prossimo</span>
+                </button>
+                <!-- /Button prev next -->S
+            </div>
+            <!-- Carousel Autoplay -->
+        </div>
+        <!-- /Jumbotron Content -->
+        <!-- Searchbar -->
+        <div class="container search">
+            <SearchBar @searchText="search" />
+        </div>
+        <!-- /Searchbar -->
+    </section>
+    <!-- /Jumbotron -->
+</template>
+
+
+<style lang="scss" scoped>
+@use '../assets/scss/_partial/variables' as *;
+
+.jumbotron {
+    position: relative;
+    .wave {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 50%;
+        height: 100%;
+        background: url(../assets/scss/img/onda1arancione.png) right;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+    .plants {
+        position: absolute;
+        left: -2.875rem;
+        bottom: -10px;
+        width: 308px;
+        height: 100%;
+        background: url(../assets/scss/img/basilico.png) no-repeat;
+        transform: rotate(-10deg);
+    }
+
+    .jumbotron-content {
+        padding: 6.25rem 0;
+        position: relative;
+
+        .column-content {
+            margin: 2.6rem 0;
+            padding: 2.5rem 1.25rem;
+
+            img {
+                object-fit: contain;
+            }
+
+            .titles {
+                h1 {
+                    text-transform: uppercase;
+                    font-size: 3.75rem;
+                    color: $fifth_color;
+                }
+                h4 {
+                    font-size: 1.25rem;
+                    color: $fourth_color;
+                }
+            }
+        }
+    }
+}
+
+// Media Query
+@media screen and (max-width: 760px) {
+    .search-bar {
+        width: 100%;
+        transform: translate(3px, -100px);
+
+    }
+}
+</style>
+
