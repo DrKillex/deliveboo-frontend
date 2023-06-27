@@ -21,6 +21,7 @@ export default {
                 }
                 )
         },
+        //carrello
         moreFood(food) {
             const newCart = this.store.cart.map((product) => {
                 if (product.id === food.id) {
@@ -73,6 +74,7 @@ export default {
             this.store.cart.forEach((food) => {
                 total += parseFloat(food.price) * food.quantity;
             });
+            this.store.totalPrice = total.toFixed(2)
             return total.toFixed(2);
         },
         singleFoodPrice(food) {
@@ -82,6 +84,8 @@ export default {
                 return food.price;
             }
         },
+        //pagamento
+
     },
     computed: {
         showFullPrice() {
@@ -98,6 +102,7 @@ export default {
 <template>
     <section>
         <div class="container">
+            <!-- cart -->
             <table class="table" v-if="store.cart.length > 0">
                 <thead>
                     <tr>
@@ -123,6 +128,8 @@ export default {
                 </tbody>
             </table>
             <div>totale: {{ getFullPrice() }}</div>
+            <router-link class="row py-3 rounded" :to="{ name: 'payment' }"><button>paga</button></router-link>
+            
             <div v-if="store.cartWarning === true">
                 <div>sei stronzo? hai cambiato ristorante, vuoi continuare su questo ristorante e svuotare l ordine
                     precedente o no? deciditi e crepa</div>
