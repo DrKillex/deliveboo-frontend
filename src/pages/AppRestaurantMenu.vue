@@ -75,6 +75,7 @@ export default {
                 total += parseFloat(food.price) * food.quantity;
             });
             this.store.totalPrice = total.toFixed(2)
+            localStorage.setItem("totalPrice", JSON.stringify(this.store.totalPrice))
             return total.toFixed(2);
         },
         singleFoodPrice(food) {
@@ -84,7 +85,13 @@ export default {
                 return food.price;
             }
         },
-        //pagamento
+        setCart(){
+            this.store.selectedRestaurant = JSON.parse(localStorage.getItem("chosenReastaurant")),
+            this.store.totalPrice = JSON.parse(localStorage.getItem("totalPrice")),
+            this.store.cart = JSON.parse(localStorage.getItem("cart"))
+            // console.log(localStorage.getItem("chosenReastaurant") + '-----------', localStorage.getItem("cart") + '-----------')
+            console.log(this.store.selectedRestaurant + '-----------test', this.store.cart + '-----------')
+        },
 
     },
     computed: {
@@ -94,6 +101,7 @@ export default {
     },
     created() {
         this.getMenu();
+        this.setCart();
     }
 }
 </script>

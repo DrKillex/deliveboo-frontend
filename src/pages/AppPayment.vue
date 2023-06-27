@@ -5,7 +5,7 @@
                 <div class="card">
                     <h4 class="card-header titleOrder" style="color:#555">Riepilogo dell'ordine</h4>
                     <ul class="card-body mb-0">
-                        <li class="card-text" v-for="food in store.cart" :key="food.id">
+                        <li class="card-text" v-for="food in store.cart">
                             {{ food.name }} x {{ food.quantity }}
                         </li>
                     </ul>
@@ -28,9 +28,17 @@
                                 <input type="text" v-model="name" class="form-control" placeholder="Inserisci Nome">
                             </div>
                             <div class="form-group">
+                                <label>surname</label>
+                                <input type="text" v-model="surname" class="form-control" placeholder="Inserisci cognome">
+                            </div>
+                            <div class="form-group">
                                 <label>Indirizzo di consegna</label>
                                 <input type="text" v-model="address" class="form-control"
                                     placeholder="Inserisci l'indirizzo di consegna">
+                            </div>
+                            <div class="form-group">
+                                <label>email</label>
+                                <input type="email" v-model="email" class="form-control" placeholder="Inserisci email">
                             </div>
                             <div class="form-group">
                                 <div class="row">
@@ -86,11 +94,13 @@ export default {
         return {
             store,
             hostedFieldInstance: false,
-            nonce: '',
+            nonce: null,
             phone_number: '',
             name: '',
             address: '',
-            error: ""
+            error: '',
+            surname:'',
+            email:'',
         };
     },
 
@@ -98,6 +108,7 @@ export default {
 
     },
     created() {
+        this.setCart();
         braintree.client.create({
             authorization: "sandbox_24xdbcxt_4w8xz848m4xxcn8f"
         })
@@ -132,10 +143,18 @@ export default {
             })
             .catch(err => {
             });
+
     },
 
 
     methods: {
+        setCart(){
+            this.store.selectedRestaurant = JSON.parse(localStorage.getItem("chosenReastaurant")),
+            this.store.totalPrice = JSON.parse(localStorage.getItem("totalPrice")),
+            this.store.cart = JSON.parse(localStorage.getItem("cart"))
+            // console.log(localStorage.getItem("chosenReastaurant") + '-----------', localStorage.getItem("cart") + '-----------')
+            console.log(this.store.selectedRestaurant + '-----------test', this.store.cart + '-----------')
+        },
         payWithCreditCard() {
             if (this.hostedFieldInstance) {
                 this.error = "";
@@ -149,7 +168,29 @@ export default {
                         console.error(err);
                         this.error = err.message;
                     })
+                    .then(()=>{
+                        this.paymentResponse()
+                    })
             }
+        },
+        paymentResponse(){
+            const data = {
+                cart: this.store.cart,
+                nonce: this.nonce,
+                totalPrice: this.store.totalPrice,
+                name: this.name,
+                surname: this.surname,
+                email: this.email,
+                telephone: this.phone_number,
+                address: this.address,
+            }
+            console.log(data)
+            axios.post(this.store.apiBaseUrl + this.store.apiUrls.payment, data)
+                .then((response) => {
+                    console.log(response)
+                    
+                }
+                )
         }
     },
 
