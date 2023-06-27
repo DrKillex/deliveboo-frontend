@@ -188,7 +188,11 @@ export default {
             axios.post(this.store.apiBaseUrl + this.store.apiUrls.payment, data)
                 .then((response) => {
                     console.log(response)
-                    
+                    if (response.data.success===true){
+                        this.store.cart = [],
+                        localStorage.clear();
+                        this.store.cartWarning = false
+                    }
                 }
                 )
         }

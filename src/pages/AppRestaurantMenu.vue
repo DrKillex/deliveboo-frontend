@@ -63,7 +63,7 @@ export default {
         },
         resetCart() {
             this.store.cart = [],
-                localStorage.clear();
+            localStorage.clear();
             this.store.cartWarning = false
         },
         resetWarning() {
