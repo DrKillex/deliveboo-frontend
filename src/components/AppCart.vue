@@ -55,7 +55,7 @@ export default {
         },
         resetCart() {
             this.store.cart = [],
-            localStorage.clear();
+                localStorage.clear();
             this.store.cartWarning = false
         },
         resetWarning() {
@@ -78,20 +78,20 @@ export default {
         },
         svuota() {
             this.store.cart = [],
-            localStorage.clear();
+                localStorage.clear();
             console.log(localStorage.getItem("chosenReastaurant"))
             console.log(localStorage.getItem("cart"))
         },
-        setCart(){
-            if (JSON.parse(localStorage.getItem("cart"))==null){
-                this.store.cart=[]
-            }else{
+        setCart() {
+            if (JSON.parse(localStorage.getItem("cart")) == null) {
+                this.store.cart = []
+            } else {
                 this.store.cart = JSON.parse(localStorage.getItem("cart"))
             }
             this.store.selectedRestaurant = JSON.parse(localStorage.getItem("chosenReastaurant")),
-            this.store.totalPrice = JSON.parse(localStorage.getItem("totalPrice")),        
-            // console.log(localStorage.getItem("chosenReastaurant") + '-----------', localStorage.getItem("cart") + '-----------')
-            console.log(this.store.selectedRestaurant + '-----------test', this.store.cart + '-----------')
+                this.store.totalPrice = JSON.parse(localStorage.getItem("totalPrice")),
+                // console.log(localStorage.getItem("chosenReastaurant") + '-----------', localStorage.getItem("cart") + '-----------')
+                console.log(this.store.selectedRestaurant + '-----------test', this.store.cart + '-----------')
         },
 
     },
@@ -99,7 +99,7 @@ export default {
         showFullPrice() {
             this.getFullPrice()
         },
-        cartElementQuantity(){
+        cartElementQuantity() {
             let total = 0
             this.store.cart.forEach(product => {
                 total += product.quantity
@@ -141,17 +141,17 @@ export default {
                             <!-- cart -->
 
                             <!-- CARD -->
-                            <!-- <div class="card mb-3" v-if="store.cart.length > 0">
+                            <div class="card mb-3" v-if="store.cart.length > 0">
                                 <div class="row g-0 " v-for="product in store.cart">
                                     <div class="img-box col-sm-12 col-md-4">
-                                        <img src="../assets/scss/img/pizza.png" alt="">
+                                        <img :src="product.image" alt="">
                                     </div>
                                     <div class="col-md-8">
                                         <div class="card-body">
                                             <div class="name-price d-flex justify-content-between">
-                                            <h5 class="card-title fw-bold">{{ product.name }}</h5>
-                                            <p class="card-text fw-bold ">{{ singleFoodPrice(product) }} €
-                                            </p>
+                                                <h5 class="card-title fw-bold">{{ product.name }}</h5>
+                                                <p class="card-text fw-bold ">{{ singleFoodPrice(product) }} €
+                                                </p>
                                             </div>
 
                                             <p class="card-text"><small class="text-body-secondary">Quantità: {{
@@ -171,11 +171,11 @@ export default {
                                         </div>
                                     </div>
                                 </div>
-                            </div> -->
+                            </div>
                             <!-- /CARD -->
 
                             <!-- Tabella -->
-                            <table class="table"  v-if="store.cart.length>0">
+                            <!-- <table class="table" v-if="store.cart.length > 0">
                                 <thead>
                                     <tr>
                                         <th scope="col">Nome Prodotto</th>
@@ -202,7 +202,7 @@ export default {
                                         </td>
                                     </tr>
                                 </tbody>
-                            </table>
+                            </table> -->
                             <!-- /Tabella -->
 
 
@@ -245,20 +245,25 @@ export default {
 
 .offcanvas {
     width: 700px;
+    padding-bottom: 100px;
 
     .card {
-        border: none;    
+        border: none;
+
         img {
-        width: 100%;}
+            width: 100%;
+        }
     }
-    }
-    .orange {
-        border-radius: 3rem;
-        background-color: $primary_color;
-        color: white;
-        padding: 0.1rem 0.5rem;
-    }
-    .buttons {
+}
+
+.orange {
+    border-radius: 3rem;
+    background-color: $primary_color;
+    color: white;
+    padding: 0.1rem 0.5rem;
+}
+
+.buttons {
     .payment-btn {
         background-color: $primary_color;
         color: $third_color;
@@ -285,8 +290,9 @@ export default {
                 .img-box {
                     display: flex;
                     justify-content: center;
+
                     img {
-                        width: 80%;
+                        width: 40%;
                     }
                 }
             }
@@ -294,5 +300,4 @@ export default {
 
     }
 
-}
-</style>
+}</style>
