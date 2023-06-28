@@ -1,6 +1,7 @@
 <template>
     <div class="container">
-        <div class="row">
+        <div class="row section-payment">
+            <!-- riepilogo carrello  -->
             <div class="col-12 col-md-6 mb-4">
                 <div class="card">
                     <h4 class="card-header titleOrder" style="color:#555">Riepilogo dell'ordine</h4>
@@ -12,6 +13,7 @@
                     <span class="ps-3 mb-3">Totale: {{ this.store.totalPrice }}€</span>
                 </div>
             </div>
+            <!-- informazioni consegna ordine -->
             <div class="col-12 col-md-6 container-cc-info m-0">
                 <div class="card color-sal">
                     <h4 class="card-header titlepayment">Informazioni consegna</h4>
@@ -23,54 +25,54 @@
                             {{ error }}
                         </div>
                         <form @submit="HandlePayPostRedirectOrder" class="d-flex flex-column">
-                            <div class="form-group">
+                            <div class="form-group my-2">
                                 <label>Nome</label>
-                                <input type="text" v-model="name" class="form-control" placeholder="Inserisci Nome">
+                                <input type="text" v-model="name" class="form-control" placeholder="Inserisci Nome" required>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group my-2">
                                 <label>surname</label>
-                                <input type="text" v-model="surname" class="form-control" placeholder="Inserisci cognome">
+                                <input type="text" v-model="surname" class="form-control" placeholder="Inserisci cognome" required>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group my-2">
                                 <label>Indirizzo di consegna</label>
                                 <input type="text" v-model="address" class="form-control"
-                                    placeholder="Inserisci l'indirizzo di consegna">
+                                    placeholder="Inserisci l'indirizzo di consegna" required>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group my-2">
                                 <label>email</label>
-                                <input type="email" v-model="email" class="form-control" placeholder="Inserisci email">
+                                <input type="email" v-model="email" class="form-control" placeholder="Inserisci email" required>
                             </div>
                             <div class="form-group">
                                 <div class="row">
-                                    <div class="col-6">
+                                    <div class="col-6 my-2">
                                         <label>Numero di telefono</label>
                                         <input type="text" v-model="phone_number" class="form-control"
                                             placeholder="numero di telefono">
                                     </div>
-                                    <div class="col-6 d-flex flex-column justify-content-between d-none">
+                                    <!-- <div class="col-6 d-flex flex-column justify-content-between d-none">
                                         <label>Totale</label>
                                         <input type="text" v-model="store.totalPrice" class="form-control"
                                             placeholder="Totale" readonly>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
-
+                         <!-- form in cui inserisci dati pagamento  -->
                             <hr />
                             <h4 class="titlepayment">Informazioni pagamento</h4>
                             <hr />
                             <div class="form-group">
                                 <label>Credit Card Number</label>
-                                <div id="creditCardNumber" class="form-control"></div>
+                                <div id="creditCardNumber" class="form-control input-pay my-1"></div>
                             </div>
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-6">
                                         <label>Expire Date</label>
-                                        <div id="expireDate" class="form-control"></div>
+                                        <div id="expireDate" class="form-control input-pay my-1"></div>
                                     </div>
                                     <div class="col-6">
                                         <label>CVV</label>
-                                        <div id="cvv" class="form-control"></div>
+                                        <div id="cvv" class="form-control input-pay my-1 mb-3"></div>
                                     </div>
                                 </div>
                             </div>
@@ -207,4 +209,11 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.section-payment{
+    margin-top: 100px;
+    .input-pay{
+        height: 40px;
+    }
+}
+</style>
