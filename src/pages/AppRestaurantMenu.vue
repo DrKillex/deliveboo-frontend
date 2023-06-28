@@ -108,10 +108,10 @@ export default {
 
 
 <template>
-    <section>
-        <div class="container">
+    <!-- <section>
+        <div class="container"> -->
             <!-- cart -->
-            <table class="table" v-if="store.cart.length > 0">
+            <!-- <table class="table" v-if="store.cart.length > 0">
                 <thead>
                     <tr>
                         <th scope="col">name</th>
@@ -148,7 +148,7 @@ export default {
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
     <section class="d-flex gap-4 flex-wrap container">
         <AppCard v-for="product in store.products" :data="product" />
     </section>
