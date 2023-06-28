@@ -202,13 +202,12 @@ export default {
 
                             <div class="fw-bold">Totale: {{ getFullPrice() }} €</div>
                             <div v-if="store.cartWarning === true">
-                                <div>sei stronzo? hai cambiato ristorante, vuoi continuare su questo ristorante e svuotare l
+                                <div>hai cambiato ristorante, vuoi continuare su questo ristorante e svuotare l
                                     ordine
-                                    precedente o no? deciditi e crepa</div>
+                                    precedente o no?</div>
                                 <div>
-                                    <button>si sono stronzo</button>
                                     <button @click="resetCart">si voglio continuare su questo ristorante</button>
-                                    <button @click="resetWarning">no sto solo cazzeggiando</button>
+                                    <button @click="resetWarning">no sto solo guardando</button>
                                 </div>
                             </div>
                         </div>
