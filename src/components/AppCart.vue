@@ -98,6 +98,13 @@ export default {
     computed: {
         showFullPrice() {
             this.getFullPrice()
+        },
+        cartElementQuantity(){
+            let total = 0
+            this.store.cart.forEach(product => {
+                total += product.quantity
+            });
+            return total
         }
     },
 
@@ -116,8 +123,7 @@ export default {
                 data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions"><font-awesome-icon
                     icon="fa-solid fa-cart-shopping" /></button>
             <!-- quantità -->
-            <div v-for="product in store.cart">{{ product.quantity }}
-            </div>
+            <div>{{ cartElementQuantity }}</div>
             <!-- /quantità -->
         </div>
 
