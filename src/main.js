@@ -18,6 +18,8 @@ library.add(faUserSecret, faCartShopping,faTrash)
 
 import App from './App.vue'
 
+
 createApp(App).use(router)
 .component('font-awesome-icon', FontAwesomeIcon)
 .mount('#app')
+
