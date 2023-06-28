@@ -4,15 +4,18 @@ import { store } from '../store';
 import AppCard from '../components/AppCard.vue';
 import SelectCategory from '../components/SelectCategory.vue';
 import SearchBar from '../components/SearchBar.vue';
+import AppCarousel from '../components/AppCarousel.vue';
+
 import axios from 'axios';
-    export default {
-        name: "AppHome",
-        components: {
-            AppCard,
-            SelectCategory,
-            SearchBar
-        },
-        data() {
+export default {
+    name: "AppHome",
+    components: {
+        AppCard,
+        SelectCategory,
+        SearchBar,
+        AppCarousel
+    },
+    data() {
         return {
             store,
         }
@@ -40,7 +43,8 @@ import axios from 'axios';
                 return this.store.restaurants.filter((res) => {
                     if (this.store.selectedCategories.every((cat) => res.categories.map(categories => categories.id).includes(cat))) {
                         return res
-                    }})
+                    }
+                })
             } else {
                 return this.store.restaurants
             }
@@ -54,21 +58,41 @@ import axios from 'axios';
 
 
 <template>
-    <main class="container">
-        <SearchBar  @searchText="search"/>
-        <section class="row">
-            <div class="col-2">
-                <SelectCategory @search="search"/>
+    <main>
+        <SearchBar @searchText="search" />
+        <!-- Carosello Immagini -->
+        <div class="appCarousel">        
+            <AppCarousel /> 
+        </div>
+        <!--/Carosello Immagini -->
+        <!-- Sezione Ristoranti -->
+        <section class=" d-flex flex-column flex-sm-row mt-2 container-md container-fluid mx-auto">
+            <!-- Ricerca Categorie -->
+            <div class="col-sm-4 col-md-3">
+                <SelectCategory @search="search" />
             </div>
-            <div class="d-flex gap-4 flex-wrap col-10">
-                <AppCard v-for="restaurant in search()" :data="restaurant"/>
+            <!--Card Ristoranti -->
+            <div class="ms_cards d-flex gap-5 flex-wrap col-sm-8 col-md-9">
+                <AppCard v-for="restaurant in search()" :data="restaurant" />
             </div>
         </section>
+        <!--/Sezione Ristoranti -->
+
     </main>
-    
 </template>
 
+<style  lang="scss" scoped>
 
-<style scoped>
+@media (max-width: 768px) {
+    .appCarousel{
+        display: none;
+    }
+}
 
+@media (max-width: 540px) {
+
+    .ms_cards {
+        justify-content: center;
+    }
+}
 </style>
