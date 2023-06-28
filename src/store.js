@@ -4,7 +4,8 @@ export const store = reactive({
   apiBaseUrl: import.meta.env.VITE_BACKEND_API_URL,
   apiUrls: {
     restaurants: '/restaurants',
-    products: '/products'
+    products: '/products',
+    payment: '/payment'
   },
   selectedRestaurant: '',
   restaurants: [],
@@ -13,5 +14,8 @@ export const store = reactive({
   searchBarText: "",
   selectedCategories: [],
   products: [],
+  cart: [],
+  totalPrice:'',
+  cartWarning: false,
 }
 )

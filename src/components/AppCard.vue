@@ -16,7 +16,41 @@ export default {
     methods: {
         getIdRedirect(where, who) {
             this.store.selectedRestaurant = who
-            this.$router.push({ name: where, params: { slug: who.slug } })
+
+            this.$router.push({name: where, params:{slug: who.slug}})
+        },
+        addFood(food){
+            if(!this.store.cart.includes(food)){
+                const product = food
+                product.quantity = 1
+                this.store.cart.push(product)
+            } else {
+                const newCart = this.store.cart.map((product)=> {
+                    if (product.id===food.id){
+                        const productChange = food
+                        productChange.quantity += 1
+                        return productChange
+                    } else {
+                        return product
+                    }
+                })
+                this.store.cart = newCart              
+            }    
+        },
+        addCart(product){
+            if(localStorage.getItem("chosenReastaurant")===null){
+                localStorage.setItem("chosenReastaurant", product.restaurant_id)
+                this.addFood(product)
+                localStorage.setItem("cart", JSON.stringify(this.store.cart))
+                console.log(localStorage.getItem("chosenReastaurant"),localStorage.getItem("cart"))
+            } else if (localStorage.getItem("chosenReastaurant")!=product.restaurant_id) {
+                this.store.cartWarning=true
+            } else {
+                this.addFood(product)
+                localStorage.setItem("cart", JSON.stringify(this.store.cart))
+                console.log(localStorage.getItem("chosenReastaurant"),localStorage.getItem("cart"))
+            }         
+
         }
     },
 
@@ -36,8 +70,7 @@ export default {
             <div v-if="data.price">{{ data.price }}$</div>
             <div v-if="data.address">{{ data.address }} </div>
             <div class="mt-3 d-flex justify-content-center">
-                <button class="btn ms_btn" v-if="data.restaurant_id" @click="getIdRedirect('product', data)">product
-                    detail</button>
+                <button class="btn ms_btn" v-if="data.restaurant_id" @click="addCart(data)">add cart</button>
                 <button class="btn ms_btn" v-else @click="getIdRedirect('menu', data)">menu</button>
             </div>
         </div>

@@ -4,21 +4,23 @@ import { store } from '../store';
 import AppCard from '../components/AppCard.vue';
 import SelectCategory from '../components/SelectCategory.vue';
 import SearchBar from '../components/SearchBar.vue';
-import AppCarousel from '../components/AppCarousel.vue';
 
+import AppJumbotron from '../components/AppJumbotron.vue';
+import AppCarousel from '../components/AppCarousel.vue';
 import axios from 'axios';
-export default {
-    name: "AppHome",
-    components: {
-        AppCard,
-        SelectCategory,
-        SearchBar,
-        AppCarousel
-    },
-    data() {
-        return {
-            store,
-        }
+    export default {
+        name: "AppHome",
+        components: {
+            AppCard,
+            AppJumbotron,
+            SelectCategory,
+            SearchBar,
+            AppCarousel
+        },
+        data() {
+          return {
+              store,
+         }
     },
     methods: {
         getData() {
@@ -58,18 +60,19 @@ export default {
 
 
 <template>
-    <main>
-        <SearchBar @searchText="search" />
-        <!-- Carosello Immagini -->
+
+    <AppJumbotron></AppJumbotron>
+    <!-- Carosello Immagini -->
         <div class="appCarousel">        
             <AppCarousel /> 
         </div>
-        <!--/Carosello Immagini -->
-        <!-- Sezione Ristoranti -->
-        <section class=" d-flex flex-column flex-sm-row mt-2 container-md container-fluid mx-auto">
+    
+    <main>
+       <section class=" d-flex flex-column flex-sm-row mt-2 container-md container-fluid mx-auto">
             <!-- Ricerca Categorie -->
             <div class="col-sm-4 col-md-3">
                 <SelectCategory @search="search" />
+
             </div>
             <!--Card Ristoranti -->
             <div class="ms_cards d-flex gap-5 flex-wrap col-sm-8 col-md-9">
@@ -89,10 +92,12 @@ export default {
     }
 }
 
+
 @media (max-width: 540px) {
 
     .ms_cards {
         justify-content: center;
     }
 }
+
 </style>
