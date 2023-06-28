@@ -55,7 +55,7 @@ export default {
         },
         resetCart() {
             this.store.cart = [],
-                localStorage.clear();
+            localStorage.clear();
             this.store.cartWarning = false
         },
         resetWarning() {
@@ -78,14 +78,18 @@ export default {
         },
         svuota() {
             this.store.cart = [],
-                localStorage.clear();
+            localStorage.clear();
             console.log(localStorage.getItem("chosenReastaurant"))
             console.log(localStorage.getItem("cart"))
         },
         setCart(){
+            if (JSON.parse(localStorage.getItem("cart"))==null){
+                this.store.cart=[]
+            }else{
+                this.store.cart = JSON.parse(localStorage.getItem("cart"))
+            }
             this.store.selectedRestaurant = JSON.parse(localStorage.getItem("chosenReastaurant")),
-            this.store.totalPrice = JSON.parse(localStorage.getItem("totalPrice")),
-            this.store.cart = JSON.parse(localStorage.getItem("cart"))
+            this.store.totalPrice = JSON.parse(localStorage.getItem("totalPrice")),        
             // console.log(localStorage.getItem("chosenReastaurant") + '-----------', localStorage.getItem("cart") + '-----------')
             console.log(this.store.selectedRestaurant + '-----------test', this.store.cart + '-----------')
         },
@@ -165,7 +169,7 @@ export default {
                             <!-- /CARD -->
 
                             <!-- Tabella -->
-                            <table class="table" v-if="store.cart.length > 0">
+                            <table class="table"  v-if="store.cart.length>0">
                                 <thead>
                                     <tr>
                                         <th scope="col">Nome Prodotto</th>
