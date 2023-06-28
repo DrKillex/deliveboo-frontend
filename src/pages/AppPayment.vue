@@ -145,7 +145,7 @@ export default {
             })
             .catch(err => {
             });
-
+            this.refreshPage()
     },
 
 
@@ -175,6 +175,14 @@ export default {
                     })
             }
         },
+        refreshPage(){
+            if (JSON.parse(localStorage.getItem("pageReloaded")===null)){
+                localStorage.setItem("pageReloaded",1)
+                this.$router.go(0);
+            } else {
+                localStorage.removeItem("pageReloaded")
+            }
+        },
         paymentResponse(){
             const data = {
                 cart: this.store.cart,
@@ -199,13 +207,6 @@ export default {
                 )
         }
     },
-
-
-
-    mounted() {
-
-    },
-
 };
 </script>
 
