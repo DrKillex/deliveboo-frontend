@@ -13,13 +13,6 @@ export default {
         }
     },
     methods: {
-        getMenu() {
-            axios.get(`${this.store.apiBaseUrl}${this.store.apiUrls.products}/${this.$route.params.slug}`)
-                .then((response) => {
-                    this.store.products = response.data.results
-                }
-                )
-        },
         //carrello
         moreFood(food) {
             const newCart = this.store.cart.map((product) => {
@@ -89,6 +82,13 @@ export default {
             console.log(localStorage.getItem("chosenReastaurant"))
             console.log(localStorage.getItem("cart"))
         },
+        setCart(){
+            this.store.selectedRestaurant = JSON.parse(localStorage.getItem("chosenReastaurant")),
+            this.store.totalPrice = JSON.parse(localStorage.getItem("totalPrice")),
+            this.store.cart = JSON.parse(localStorage.getItem("cart"))
+            // console.log(localStorage.getItem("chosenReastaurant") + '-----------', localStorage.getItem("cart") + '-----------')
+            console.log(this.store.selectedRestaurant + '-----------test', this.store.cart + '-----------')
+        },
 
     },
     computed: {
@@ -99,6 +99,7 @@ export default {
 
     created() {
         this.getMenu();
+        this.setCart();
     }
 }
 </script>
