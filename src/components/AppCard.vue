@@ -36,12 +36,6 @@ export default {
                 this.store.cart = newCart              
             }    
         },
-        test(){
-            this.store.cart=[],
-            localStorage.clear();
-            console.log(localStorage.getItem("chosenReastaurant"))
-            console.log(localStorage.getItem("cart"))
-        },
         addCart(product){
             if(localStorage.getItem("chosenReastaurant")===null){
                 localStorage.setItem("chosenReastaurant", product.restaurant_id)
@@ -74,7 +68,6 @@ export default {
             <div v-if="data.price">{{ data.price }}$</div>                 
             <div  v-if="data.address">Indirizzo: {{ data.address }} </div>
             <button v-if="data.restaurant_id" @click="addCart(data)">add cart</button>
-            <button v-if="data.restaurant_id" @click="test()">test</button>
             <button v-else @click="getIdRedirect('menu', data)">menu</button>
         </div>
     </div>

@@ -34,7 +34,7 @@ export default {
                 </div>
                 <!-- /hamburger menu -->
                 <!-- navbar collegamenti -->
-                <ul class="navbar-links d-flex">
+                <ul class="navbar-links d-flex align-items-center">
                     <li><a href="http://127.0.0.1:8000/login">Accedi</a></li>
                     <li><a href="http://127.0.0.1:8000/register">Registrati</a></li>
                     <!-- offcanvas -->

@@ -12,8 +12,9 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 /* import specific icons - inserire qui le icone */
 import { faUserSecret } from '@fortawesome/free-solid-svg-icons'
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons'; 
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
 /* add icons to the library - inserire qui le icone */
-library.add(faUserSecret, faCartShopping)
+library.add(faUserSecret, faCartShopping,faTrash)
 
 import App from './App.vue'
 
