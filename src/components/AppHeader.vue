@@ -47,7 +47,7 @@ export default {
                     <router-link :to="{ name: 'home' }" class="link">
                         <img src="../assets/scss/img/logo.png" alt="Logo" width="100" class="d-inline-block align-text-top">
                     </router-link>
-                    <h1 class="mb-0 fs-3 fw-bold">FOOD FOR ALL</h1>
+                    <h1 class="mb-0 fw-bold d-none d-sm-block">FOOD FOR ALL</h1>
                 </div>
                 <!-- /navbar collegamenti -->
             </div>
@@ -97,6 +97,9 @@ export default {
     .logo {
         font-size: .9375rem;
         font-weight: bold;
+        h1{
+            font-size: 25px;
+        }
     }
 
 }
@@ -141,6 +144,13 @@ export default {
 
     .navbar-container {
         height: 64px;
+        // min-width: 280px;
+        .logo{
+            h1{
+                font-size: 15.9px;
+                padding-right: 5px;
+            }
+        }
 
         .hamburger-lines {
             height: 23px;
