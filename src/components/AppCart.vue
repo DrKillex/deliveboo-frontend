@@ -53,14 +53,6 @@ export default {
             localStorage.setItem("cart", JSON.stringify(this.store.cart))
             console.log(localStorage.getItem("chosenReastaurant") + '-----------', localStorage.getItem("cart") + '-----------')
         },
-        resetCart() {
-            this.store.cart = [],
-            localStorage.clear();
-            this.store.cartWarning = false
-        },
-        resetWarning() {
-            this.store.cartWarning = false
-        },
         getFullPrice() {
             let total = 0;
             this.store.cart.forEach((food) => {
@@ -78,20 +70,20 @@ export default {
         },
         svuota() {
             this.store.cart = [],
-            localStorage.clear();
+                localStorage.clear();
             console.log(localStorage.getItem("chosenReastaurant"))
             console.log(localStorage.getItem("cart"))
         },
-        setCart(){
-            if (JSON.parse(localStorage.getItem("cart"))==null){
-                this.store.cart=[]
-            }else{
+        setCart() {
+            if (JSON.parse(localStorage.getItem("cart")) == null) {
+                this.store.cart = []
+            } else {
                 this.store.cart = JSON.parse(localStorage.getItem("cart"))
             }
             this.store.selectedRestaurant = JSON.parse(localStorage.getItem("chosenReastaurant")),
-            this.store.totalPrice = JSON.parse(localStorage.getItem("totalPrice")),        
-            // console.log(localStorage.getItem("chosenReastaurant") + '-----------', localStorage.getItem("cart") + '-----------')
-            console.log(this.store.selectedRestaurant + '-----------test', this.store.cart + '-----------')
+                this.store.totalPrice = JSON.parse(localStorage.getItem("totalPrice")),
+                // console.log(localStorage.getItem("chosenReastaurant") + '-----------', localStorage.getItem("cart") + '-----------')
+                console.log(this.store.selectedRestaurant + '-----------test', this.store.cart + '-----------')
         },
 
     },
@@ -169,7 +161,7 @@ export default {
                             <!-- /CARD -->
 
                             <!-- Tabella -->
-                            <table class="table"  v-if="store.cart.length>0">
+                            <table class="table" v-if="store.cart.length > 0">
                                 <thead>
                                     <tr>
                                         <th scope="col">Nome Prodotto</th>
@@ -198,18 +190,7 @@ export default {
                                 </tbody>
                             </table>
                             <!-- /Tabella -->
-
-
                             <div class="fw-bold">Totale: {{ getFullPrice() }} €</div>
-                            <div v-if="store.cartWarning === true">
-                                <div>hai cambiato ristorante, vuoi continuare su questo ristorante e svuotare l
-                                    ordine
-                                    precedente o no?</div>
-                                <div>
-                                    <button @click="resetCart">si voglio continuare su questo ristorante</button>
-                                    <button @click="resetWarning">no sto solo guardando</button>
-                                </div>
-                            </div>
                         </div>
                         <!-- Ordina -->
                         <div class="buttons mt-4 row">
@@ -241,18 +222,22 @@ export default {
     width: 700px;
 
     .card {
-        border: none;    
+        border: none;
+
         img {
-        width: 100%;}
+            width: 100%;
+        }
     }
-    }
-    .orange {
-        border-radius: 3rem;
-        background-color: $primary_color;
-        color: white;
-        padding: 0.1rem 0.5rem;
-    }
-    .buttons {
+}
+
+.orange {
+    border-radius: 3rem;
+    background-color: $primary_color;
+    color: white;
+    padding: 0.1rem 0.5rem;
+}
+
+.buttons {
     .payment-btn {
         background-color: $primary_color;
         color: $third_color;
@@ -279,6 +264,7 @@ export default {
                 .img-box {
                     display: flex;
                     justify-content: center;
+
                     img {
                         width: 80%;
                     }
@@ -288,5 +274,4 @@ export default {
 
     }
 
-}
-</style>
+}</style>
