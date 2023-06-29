@@ -31,14 +31,12 @@ export default {
 
 <template>
     <div>
-        <div class="text-center">
+        <!-- Bottoni Categorie  -->
+        <div class="mt-3 text-center">
             <div class="mx-3 ms_text_category">Tutte le categorie</div>
             <!-- Tasto Reset -->
-            <button class="ms_btn text-white"> Reset </button>
-        </div>
-        <!-- Bottoni Categorie  -->
-        <div class="mt-3">
-            <ul class="list-unstyled justify-content-center text-center flex-wrap d-flex flex-sm-column position-relative">
+            <button class="ms_btn text-white mb-3"> Reset </button>
+            <ul class="list-unstyled justify-content-center text-center flex-wrap d-flex position-relative">
                 <li v-bind:class="{ active: store.selectedCategories.includes(category.id) }"
                     class="btn m-sm-3 my-1 mx-3 ms_card text-white" v-for="category in store.categories"
                     @click="$emit('search'); addCategory(category.id)">
@@ -101,24 +99,8 @@ div.mt-3 ul.list-unstyled.justify-content-center li.active {
     }
 }
 
-//  Animazione Img
 img {
         width: 130px;
-
-        // transition: all .2s ease-in-out;
-        // -webkit-transition: all .2s ease-in-out;
-        // -moz-transition: all .2s ease-in-out;
-        // -ms-transition: all .2s ease-in-out;
-        // -o-transition: all .2s ease-in-out;
-
-
-        // &:hover {
-        //     transform: scale(1.1);
-        //     -webkit-transform: scale(1.1);
-        //     -moz-transform: scale(1.2);
-        //     -ms-transform: scale(1.1);
-        //     -o-transform: scale(1.1)
-        // }
     }
 
 @media (max-width: 768px) {
