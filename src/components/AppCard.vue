@@ -17,16 +17,16 @@ export default {
         getIdRedirect(where, who) {
             this.store.selectedRestaurant = who
 
-            this.$router.push({name: where, params:{slug: who.slug}})
+            this.$router.push({ name: where, params: { slug: who.slug } })
         },
-        addFood(food){
-            if(!this.store.cart.includes(food)){
+        addFood(food) {
+            if (!this.store.cart.includes(food)) {
                 const product = food
                 product.quantity = 1
                 this.store.cart.push(product)
             } else {
-                const newCart = this.store.cart.map((product)=> {
-                    if (product.id===food.id){
+                const newCart = this.store.cart.map((product) => {
+                    if (product.id === food.id) {
                         const productChange = food
                         productChange.quantity += 1
                         return productChange
@@ -34,23 +34,79 @@ export default {
                         return product
                     }
                 })
-                this.store.cart = newCart              
-            }    
+                this.store.cart = newCart
+            }
         },
-        addCart(product){
-            if(localStorage.getItem("chosenReastaurant")===null){
+        moreFood(food) {
+            const newCart = this.store.cart.map((product) => {
+                if (product.id === food.id) {
+                    const productChange = food
+                    productChange.quantity += 1
+                    return productChange
+                } else {
+                    return product
+                }
+            })
+            this.store.cart = newCart
+            localStorage.setItem("cart", JSON.stringify(this.store.cart))
+            console.log(localStorage.getItem("chosenReastaurant") + '-----------', localStorage.getItem("cart") + '-----------')
+        },
+        lessFood(food) {
+            if (food.quantity == 1) {
+                this.removeFood(food)
+            } else {
+                const newCart = this.store.cart.map((product) => {
+                    if (product.id === food.id) {
+                        product.quantity -= 1 ///////////////////////fare cosi per tutti
+                        return product
+                    } else {
+                        return product
+                    }
+                })
+                this.store.cart = newCart
+                localStorage.setItem("cart", JSON.stringify(this.store.cart))
+                console.log(localStorage.getItem("chosenReastaurant") + '-----------', localStorage.getItem("cart") + '-----------')
+            }
+
+        },
+        removeFood(food) {
+            const index = this.store.cart.map(product => product.id).indexOf(food.id)
+            console.log(index)
+            this.store.cart.splice(index, 1)
+            localStorage.setItem("cart", JSON.stringify(this.store.cart))
+            console.log(localStorage.getItem("chosenReastaurant") + '-----------', localStorage.getItem("cart") + '-----------')
+        },
+        addCart(product) {
+            if (localStorage.getItem("chosenReastaurant") === null) {
                 localStorage.setItem("chosenReastaurant", product.restaurant_id)
                 this.addFood(product)
                 localStorage.setItem("cart", JSON.stringify(this.store.cart))
-                console.log(localStorage.getItem("chosenReastaurant"),localStorage.getItem("cart"))
-            } else if (localStorage.getItem("chosenReastaurant")!=product.restaurant_id) {
-                this.store.cartWarning=true
+                console.log(localStorage.getItem("chosenReastaurant"), localStorage.getItem("cart"))
+            } else if (localStorage.getItem("chosenReastaurant") != product.restaurant_id) {
+                this.store.cartWarning = true
             } else {
                 this.addFood(product)
                 localStorage.setItem("cart", JSON.stringify(this.store.cart))
-                console.log(localStorage.getItem("chosenReastaurant"),localStorage.getItem("cart"))
-            }         
+                console.log(localStorage.getItem("chosenReastaurant"), localStorage.getItem("cart"))
+            }
 
+        },
+        isInCart(id) {
+            let productsId = []
+            if (this.store.cart !== null && this.store.cart.length > 0) {
+                this.store.cart.forEach(product => {
+                    productsId.push(product.id)
+                });
+            }
+            if (productsId.includes(id)) {
+                return true
+            } else {
+                return false
+            }
+        },
+        getQuantity(id) {
+            const product = this.store.cart.find(element => element.id === id)
+            return product.quantity
         }
     },
 
@@ -70,8 +126,14 @@ export default {
             <div v-if="data.price">{{ data.price }}€</div>
             <div v-if="data.address">{{ data.address }} </div>
             <div class="mt-3 d-flex justify-content-center">
-                <button class="btn ms_btn text-white" v-if="data.restaurant_id" @click="addCart(data)">Add cart</button>
-                <button class="btn ms_btn text-white" v-else @click="getIdRedirect('menu', data)">Menu</button>
+
+                <button class="btn ms_btn text-white" v-if="data.restaurant_id && isInCart(data.id) === false" @click="addCart(data)">add
+                    cart</button>
+                <button class="btn ms_btn text-white" v-if="!data.restaurant_id" @click="getIdRedirect('menu', data)">menu</button>
+                <button class="btn ms_btn text-white" v-if="data.restaurant_id && isInCart(data.id)" @click="lessFood(data)">-</button>
+                <span v-if="data.restaurant_id && isInCart(data.id)">{{getQuantity(data.id)}}</span>
+                <button class="btn ms_btn text-white" v-if="data.restaurant_id && isInCart(data.id)" @click="moreFood(data)">+</button>
+
             </div>
         </div>
     </div>
@@ -119,20 +181,22 @@ img {
 
 @media (max-width: 768px) {
     img {
-    border-radius: 20px;
-    width: 210px;
-    height: 130px;
-}
+        border-radius: 20px;
+        width: 210px;
+        height: 130px;
+    }
 
 }
 
 @media (max-width: 540px) {
     img {
-    border-radius: 20px;
-    width: 288px;
-    height: 200px;
+        border-radius: 20px;
+        width: 288px;
+        height: 200px;
+    }
 }
 
 
 }
+
 </style>

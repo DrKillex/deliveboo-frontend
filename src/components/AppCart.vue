@@ -53,6 +53,16 @@ export default {
             localStorage.setItem("cart", JSON.stringify(this.store.cart))
             console.log(localStorage.getItem("chosenReastaurant") + '-----------', localStorage.getItem("cart") + '-----------')
         },
+
+        resetCart() {
+            this.store.cart = [],
+                localStorage.clear();
+            this.store.cartWarning = false
+        },
+        resetWarning() {
+            this.store.cartWarning = false
+        },
+
         getFullPrice() {
             let total = 0;
             this.store.cart.forEach((food) => {
@@ -90,6 +100,13 @@ export default {
     computed: {
         showFullPrice() {
             this.getFullPrice()
+        },
+        cartElementQuantity() {
+            let total = 0
+            this.store.cart.forEach(product => {
+                total += product.quantity
+            });
+            return total
         }
     },
 
@@ -108,8 +125,7 @@ export default {
                 data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions"><font-awesome-icon
                     icon="fa-solid fa-cart-shopping" /></button>
             <!-- quantità -->
-            <div v-for="product in store.cart">{{ product.quantity }}
-            </div>
+            <div>{{ cartElementQuantity }}</div>
             <!-- /quantità -->
         </div>
 
@@ -127,17 +143,17 @@ export default {
                             <!-- cart -->
 
                             <!-- CARD -->
-                            <!-- <div class="card mb-3" v-if="store.cart.length > 0">
+                            <div class="card mb-3" v-if="store.cart.length > 0">
                                 <div class="row g-0 " v-for="product in store.cart">
                                     <div class="img-box col-sm-12 col-md-4">
-                                        <img src="../assets/scss/img/pizza.png" alt="">
+                                        <img :src="product.image" alt="">
                                     </div>
                                     <div class="col-md-8">
                                         <div class="card-body">
                                             <div class="name-price d-flex justify-content-between">
-                                            <h5 class="card-title fw-bold">{{ product.name }}</h5>
-                                            <p class="card-text fw-bold ">{{ singleFoodPrice(product) }} €
-                                            </p>
+                                                <h5 class="card-title fw-bold">{{ product.name }}</h5>
+                                                <p class="card-text fw-bold ">{{ singleFoodPrice(product) }} €
+                                                </p>
                                             </div>
 
                                             <p class="card-text"><small class="text-body-secondary">Quantità: {{
@@ -157,11 +173,13 @@ export default {
                                         </div>
                                     </div>
                                 </div>
-                            </div> -->
+                            </div>
                             <!-- /CARD -->
 
                             <!-- Tabella -->
+
                             <table class="table" v-if="store.cart.length > 0">
+
                                 <thead>
                                     <tr>
                                         <th scope="col">Nome Prodotto</th>
@@ -188,7 +206,7 @@ export default {
                                         </td>
                                     </tr>
                                 </tbody>
-                            </table>
+                            </table> -->
                             <!-- /Tabella -->
                             <div class="fw-bold">Totale: {{ getFullPrice() }} €</div>
                         </div>
@@ -220,6 +238,7 @@ export default {
 
 .offcanvas {
     width: 700px;
+    padding-bottom: 100px;
 
     .card {
         border: none;
@@ -266,7 +285,7 @@ export default {
                     justify-content: center;
 
                     img {
-                        width: 80%;
+                        width: 40%;
                     }
                 }
             }
