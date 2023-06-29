@@ -119,7 +119,7 @@ export default {
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Prossimo</span>
                 </button>
-                <!-- /Button prev next -->S
+                <!-- /Button prev next -->
             </div>
             <!-- Carousel Autoplay -->
         </div>
