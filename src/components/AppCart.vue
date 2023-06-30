@@ -53,7 +53,6 @@ export default {
             localStorage.setItem("cart", JSON.stringify(this.store.cart))
             console.log(localStorage.getItem("chosenReastaurant") + '-----------', localStorage.getItem("cart") + '-----------')
         },
-
         resetCart() {
             this.store.cart = [],
                 localStorage.clear();
@@ -62,7 +61,6 @@ export default {
         resetWarning() {
             this.store.cartWarning = false
         },
-
         getFullPrice() {
             let total = 0;
             this.store.cart.forEach((food) => {
@@ -118,79 +116,73 @@ export default {
 
 
 <template>
-    <div class="order-sm-1 order-md-3 col-sm-12 col-md-4 col-lg-3">
-        <!-- Offcanvas -->
-        <div class="d-flex">
-            <button class="btn border-0 fs-6 p-0 border-dark-subtle mx-2" type="button" data-bs-toggle="offcanvas"
-                data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions"><font-awesome-icon
-                    icon="fa-solid fa-cart-shopping" /></button>
-            <!-- quantità -->
-            <div>{{ cartElementQuantity }}</div>
-            <!-- /quantità -->
-        </div>
-
-        <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions"
-            aria-labelledby="offcanvasWithBothOptionsLabel">
-            <div class="offcanvas-header">
-                <div class="row">
-                    <!-- Parte superiore  Offcanvas -->
-                    <div class="d-flex">
-                        <h5 class="offcanvas-title fw-bold flex-grow-1" id="offcanvasWithBothOptionsLabel">Il tuo ordine
-                        </h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                    </div>
+    <!-- Offcanvas -->
+    <div class="d-flex">
+        <button class="btn border-0 fs-6 p-0 border-dark-subtle mx-2" type="button" data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions"><font-awesome-icon
+                icon="fa-solid fa-cart-shopping" /></button>
+        <!-- quantità -->
+        <div>{{ cartElementQuantity }}</div>
+        <!-- /quantità -->
+    </div>
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasWithBothOptions"
+        aria-labelledby="offcanvasWithBothOptionsLabel">
+        <div class="offcanvas-header">
+            <div class="row">
+                <!-- Parte superiore  Offcanvas -->
+                <div class="d-flex">
+                    <h5 class="offcanvas-title fw-bold flex-grow-1" id="offcanvasWithBothOptionsLabel">Il tuo ordine
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
             </div>
-            <!-- Card dentro Offcanvas -->
-            <div class="offcanvas-body" id="offcanvas">
-                <form class="row g-3">
-                    <div class="col-12">
-                        <div class="container d-flex flex-column">
-                            <!-- cart -->
-
-                            <!-- CARD -->
-                            <div class="mb-3" v-if="store.cart.length > 0">
-                                <div class="card" v-for="product in store.cart">
-                                    <div class="row  g-0">
-                                        <div class="img-box col-sm-12 col-md-4">
-                                            <img :src="product.image" alt="">
-                                        </div>
-                                        <div class="col-md-8">
-                                            <div class="card-body">
-                                                <div class="name-price d-flex justify-content-between">
-                                                    <h5 class="card-title fw-bold">{{ product.name }}</h5>
-                                                    <p class="card-text fw-bold ">{{ singleFoodPrice(product) }} €
-                                                    </p>
-                                                </div>
-
-                                                <p class="card-text"><small class="text-body-secondary">Quantità: {{
-                                                    product.quantity }}
-                                                        <ul class="list-unstyled d-flex gap-2 mt-3">
-                                                            <li><button class="btn orange"
-                                                                    @click.prevent="lessFood(product)">-</button>
-                                                            </li>
-                                                            <li><button class="btn orange"
-                                                                    @click.prevent="moreFood(product)">+</button>
-                                                            </li>
-                                                            <li><button class="btn  orange"
-                                                                    @click.prevent="removeFood(product)"><font-awesome-icon
-                                                                        icon="fa-solid fa-trash" /> Rimuovi</button></li>
-                                                        </ul>
-                                                    </small></p>
+        </div>
+        <!-- Card dentro Offcanvas -->
+        <div class="offcanvas-body" id="offcanvas" data-bs-scroll="true">
+            <form class="row g-3">
+                <div class="col-12">
+                    <div class="container d-flex flex-column">
+                        <!-- CARD -->
+                        <div class="mb-3" v-if="store.cart.length > 0">
+                            <div class="card" v-for="product in store.cart">
+                                <div class="row  g-0">
+                                    <!-- immagine prodotto -->
+                                    <div class="img-box col-sm-12 col-md-4">
+                                        <img :src="product.image" alt="">
+                                    </div>
+                                    <!-- /immagine prodotto -->
+                                    <div class="col-md-8">
+                                        <div class="card-body">
+                                            <div class="name-price d-flex justify-content-between">
+                                                <h5 class="card-title fw-bold">{{ product.name }}</h5>
+                                                <p class="card-text fw-bold ">{{ singleFoodPrice(product) }} €
+                                                </p>
                                             </div>
+                                            <p class="card-text"><small class="text-body-secondary">Quantità: {{
+                                                product.quantity }}
+                                                    <ul class="list-unstyled d-flex gap-2 mt-3">
+                                                        <li><button class="btn orange"
+                                                                @click.prevent="lessFood(product)">-</button>
+                                                        </li>
+                                                        <li><button class="btn orange"
+                                                                @click.prevent="moreFood(product)">+</button>
+                                                        </li>
+                                                        <li><button class="btn  orange"
+                                                                @click.prevent="removeFood(product)"><font-awesome-icon
+                                                                    icon="fa-solid fa-trash" /> Rimuovi</button></li>
+                                                    </ul>
+                                                </small></p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div v-else class="fw-bold zero-article row"> Non hai nessun articolo nel carrello
-                            </div>
-                            <!-- /CARD -->
+                        </div>
+                        <div v-else class="fw-bold zero-article row"> Non hai nessun articolo nel carrello
+                        </div>
+                        <!-- /CARD -->
 
-
-                            <!-- Tabella -->
-
-                            <!-- <table class="table" v-if="store.cart.length > 0">
-
+                        <!-- Tabella -->
+                        <!-- <table class="table" v-if="store.cart.length > 0">
                                 <thead>
                                     <tr>
                                         <th scope="col">Nome Prodotto</th>
@@ -218,53 +210,40 @@ export default {
                                     </tr>
                                 </tbody>
                             </table> -->
-                            <!-- /Tabella -->
-                            <!-- <div class="fw-bold">Totale: {{ getFullPrice() }} €</div> -->
-                        </div>
-                        <!-- Ordina -->
-                        <!-- <div class="buttons mt-4 row">
-                            <div class="button-left col-md-8 col-sm-12">
-                                <router-link :to="{ name: 'payment' }">
-                                    <button class="fw-bold w-100 payment-btn btn">Vai al pagamento</button>
-                                </router-link>
-                            </div>
-                            <div class="button-right col-md-4 col-sm-12">
-                                <button class="fw-bold w-100 btn deleteproducts-btn" @click.prevent="svuota()">Svuota
-                                    Carrello</button>
-                            </div>
-                        </div> -->
+                        <!-- /Tabella -->
+
                     </div>
-                </form>
-            </div>
-            <!-- Header cart -->
-            <div class="header-cart-resume p-2 row ms-0" v-if="store.cart.length > 0">
-                <div class="col-sm-2 col-md-3 fw-bold total d-flex align-items-center">Totale: {{ getFullPrice() }} €</div>
-                <div class="col-sm-10 col-md-9 buttons">
-                    <div class="header-cart-buttons d-flex justify-content-around align-items-center">
-                        <div class="button-left col-md-7 d-flex justify-content-center">
-                            <router-link :to="{ name: 'payment' }">
-                                <button v-if="store.cart.length > 1" class="fw-bold payment-btn btn">Procedi
-                                    all'ordine ({{
-                                        cartElementQuantity }}
-                                    articoli)</button>
-                                <button v-else class="fw-bold payment-btn btn">Procedi all'ordine ({{
+                </div>
+            </form>
+        </div>
+        <!-- Parte Inferiore -->
+        <div class="header-cart-resume p-2 row ms-0" v-if="store.cart.length > 0">
+            <div class="col-sm-2 col-md-3 fw-bold total d-flex align-items-center">Totale: {{ getFullPrice() }} €</div>
+            <div class="col-sm-10 col-md-9 buttons">
+                <div class="header-cart-buttons d-flex justify-content-around align-items-center">
+                    <div class="button-left col-md-7 d-flex justify-content-center">
+                        <router-link :to="{ name: 'payment' }">
+                            <button v-if="store.cart.length > 1" class="fw-bold payment-btn btn">Procedi
+                                all'ordine ({{
                                     cartElementQuantity }}
-                                    articolo)</button>
-                            </router-link>
-                        </div>
-                        <div class="button-right col-md-5 d-flex justify-content-center ms-3">
-                            <button class="fw-bold align-items-center btn deleteproducts-btn"
-                                @click.prevent="svuota()"><font-awesome-icon icon="fa-solid fa-trash" /> Svuota
-                                Carrello</button>
-                        </div>
+                                articoli)</button>
+                            <button v-else class="fw-bold payment-btn btn">Procedi all'ordine ({{
+                                cartElementQuantity }}
+                                articolo)</button>
+                        </router-link>
+                    </div>
+                    <div class="button-right col-md-5 d-flex justify-content-center ms-3">
+                        <button class="fw-bold align-items-center btn deleteproducts-btn"
+                            @click.prevent="svuota()"><font-awesome-icon icon="fa-solid fa-trash" /> Svuota
+                            Carrello</button>
                     </div>
                 </div>
             </div>
-            <!-- /Header cart -->
-            <!-- Form dentro Offcanvas -->
         </div>
-        <!-- /Offcanvas -->
+        <!-- /Parte Inferiore -->
+        <!-- Form dentro Offcanvas -->
     </div>
+    <!-- /Offcanvas -->
 </template>
 
 
@@ -273,7 +252,7 @@ export default {
 
 
 .offcanvas {
-    width: 600px;
+    width: 600px !important;
 
     .header-cart-resume {
         box-shadow: 1px -3px 2px 1px rgba(221, 221, 221, 0.7);
@@ -440,4 +419,5 @@ export default {
 
     }
 
-}</style>
+}
+</style>
