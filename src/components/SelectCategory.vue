@@ -66,7 +66,6 @@ export default {
     border-radius: 20px;
     padding: 5px 20px;
     border: none;
-
     &:hover {
         background-color: #faa856;
         box-shadow: 0px 0px 16px 0px #faa856;
