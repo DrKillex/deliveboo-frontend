@@ -23,12 +23,12 @@
                 <div class="card color-sal">
                     <h4 class="card-header titlepayment">Informazioni consegna</h4>
                     <div class="card-body">
-                        <div class="alert alert-success" v-if="nonce">
+                        <!-- <div class="alert alert-success" v-if="nonce">
                             Successfully generated nonce.
                         </div>
                         <div class="alert alert-danger" v-if="error">
                             {{ error }}
-                        </div>
+                        </div> -->
                         <form @submit="HandlePayPostRedirectOrder" class="d-flex flex-column">
                             <div class="form-group my-2">
                                 <label>Nome</label>
