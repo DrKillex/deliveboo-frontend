@@ -77,6 +77,7 @@ export default {
     color: $primary_color;
     z-index: 999;
 
+    
     .navbar-links {
         margin-bottom: 0;
         order: 2;
