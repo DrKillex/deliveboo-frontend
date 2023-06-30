@@ -89,7 +89,7 @@
 import axios from 'axios';
 import braintree from 'braintree-web';
 import { store } from '../store';
-
+import swal from 'sweetalert';
 export default {
     name: "AppPayment",
     data() {
@@ -202,6 +202,8 @@ export default {
                         this.store.cart = [],
                         localStorage.clear();
                         this.store.cartWarning = false
+                        swal("Pagamento effettuato", "Il tuo ordine arriverà a breve", "success");
+                        this.$router.push({ name: 'home' });
                     }
                 }
                 )
