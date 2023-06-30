@@ -62,19 +62,21 @@ import axios from 'axios';
 <template>
 
     <AppJumbotron></AppJumbotron>
+
     <!-- Carosello Immagini
         <div class="appCarousel">        
             <AppCarousel /> 
         </div>
      -->
+
     <main>
        <section class=" d-flex flex-column flex-sm-row mt-2 container-md container-fluid mx-auto">
             <!-- Ricerca Categorie -->
-            <div class="col-sm-4 col-md-3">
+            <div class="category col-sm-4 col-md-3 d-md-fle">
                 <SelectCategory @search="search" />
             </div>
             <!--Card Ristoranti -->
-            <div class="ms_cards d-flex gap-5 flex-wrap col-sm-8 col-md-9 justify-content-center align-content-start">
+            <div class="ms_cards mt-4 d-flex gap-5 flex-wrap col-sm-8 col-md-9 justify-content-center align-content-start">
                 <AppCard v-for="restaurant in search()" :data="restaurant" />
             </div>
         </section>
@@ -84,6 +86,9 @@ import axios from 'axios';
 </template>
 
 <style  lang="scss" scoped>
+.category{
+    padding-right: 90px;
+}
 
 @media (max-width: 768px) {
     .appCarousel{
@@ -97,6 +102,9 @@ import axios from 'axios';
     .ms_cards {
         justify-content: center;
     }
+    .category{
+    padding-right: 0;
+}
 }
 
 </style>

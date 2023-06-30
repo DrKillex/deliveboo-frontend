@@ -44,10 +44,10 @@ export default {
                     <!-- offcanvas -->
                 </ul>
                 <div class="logo d-flex align-items-center mx-3">
-                    <router-link :to="{ name: 'home' }" class="link">
+                    <router-link :to="{ name: 'home' }" class="link d-flex align-items-center text-decoration-none">
                         <img src="../assets/scss/img/logo.png" alt="Logo" width="100" class="d-inline-block align-text-top">
+                        <h1 class="mb-0 fw-bold d-none d-sm-block">FOOD FOR ALL</h1>
                     </router-link>
-                    <h1 class="mb-0 fw-bold d-none d-sm-block">FOOD FOR ALL</h1>
                 </div>
                 <!-- /navbar collegamenti -->
             </div>
@@ -75,8 +75,9 @@ export default {
     top: 0;
     background-color: $third_color;
     color: $primary_color;
-    z-index: 99;
+    z-index: 999;
 
+    
     .navbar-links {
         margin-bottom: 0;
         order: 2;
@@ -99,6 +100,7 @@ export default {
         font-weight: bold;
         h1{
             font-size: 25px;
+            color: $primary_color !important;
         }
     }
 

@@ -35,14 +35,18 @@ export default {
 <template>
     <div>
         <!-- Bottoni Categorie  -->
-        <div class="">
-            <div class="ms_text_category">Tutte le categorie</div>
-            <!-- Tasto Reset -->
-            <button class="ms_btn text-white mb-3" @click="emptyCategories"> Reset </button>
-            <!-- Categorie -->
-            <ul class="list-unstyled justify-content-center text-center flex-wrap d-flex position-relative">
+        <div>
+
+            <div class="header-category d-flex  pe-4 mb-3">
+                <div class="mx-3 ms_text_category fs-3 fw-bold">Tutte le categorie</div>
+                <!-- Tasto Reset -->
+                <button class="ms_btn mt-sm-3 mb-3 reset" @click="emptyCategories"> Resetta </button>
+            </div>
+            <ul
+                class="list-unstyled justify-content-start ms_overflow text-center flex-sm-wrap d-flex position-relative gap-3">
                 <li v-bind:class="{ active: store.selectedCategories.includes(category.id) }"
                     class="btn d-flex justify-content-evenly align-items-center flex-column m-sm-3 my-1 mx-3 ms_card text-white" v-for="category in store.categories"
+
                     @click="$emit('search'); addCategory(category.id)">
                     <div>{{ category.name }}</div>
                     <img class="text-center" :src="category.img" alt="immagine categoria">
@@ -62,18 +66,23 @@ export default {
 
 
 .ms_btn {
-    background-color: $primary_color;
+    background-color: $third_color;
     border-radius: 20px;
     padding: 5px 20px;
     border: none;
+    box-shadow: 0 0 1.5px rgba(0, 0, 0, 0.6);
+    font-weight: bold;
+    color: $fourth_color;
+
 
     &:hover {
-        background-color: #faa856;
-        box-shadow: 0px 0px 16px 0px #faa856;
+        background-color: $secondary_color;
     }
 }
 
-div.mt-3 ul.list-unstyled.justify-content-center li.active {
+
+div ul.list-unstyled.justify-content-start li.active {
+
     font-weight: bold;
     background-color: #faa856;
     box-shadow: 0px 0px 26px -2px #000000;
@@ -103,9 +112,11 @@ div.mt-3 ul.list-unstyled.justify-content-center li.active {
         -o-transform: scale(1.1)
     }
 
+
     img {
         width: 100px;
     }
+
 
 }
 
@@ -128,9 +139,39 @@ div.mt-3 ul.list-unstyled.justify-content-center li.active {
     }
 }
 
-@media (max-width: 540px) {
+@media (max-width: 575px) {
     .ms_card {
         width: 40%;
+    }
+
+    .header-category {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1.25rem;
+
+        button {
+            margin-bottom: 0 !important;
+            font-size: 17px;
+        }
+    }
+
+    ul {
+        .btn {
+            background-color: $primary_color;
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            padding: 2.2rem 2rem;
+            font-size: 16px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            
+        }
+    }
+
+    .ms_overflow {
+        overflow-x: scroll;
     }
 
 }

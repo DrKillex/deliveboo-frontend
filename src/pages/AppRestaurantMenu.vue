@@ -48,6 +48,8 @@ export default {
 
 <template>
     <section class="menu">
+        <div class="plants"></div>
+        <div class="wave"></div>
         <div class="container position-relative">
             <div class="text-center">
                 <img class="rounded-2 mb-3" :src="getImgLink(store.products[0].restaurant)" alt="">
@@ -87,7 +89,7 @@ export default {
             <div class="pop_up position-fixed" v-if="store.cartWarning === true">
                 <h5 class="p-3">Hai cambiato ristorante, vuoi continuare su questo ristorante e svuotare l
                     ordine precedente o no?</h5>
-                <div class="d-flex justify-content-center gap-5 mt-4">
+                <div class="d-flex justify-content-center gap-2 mt-4">
                     <button class="btn" @click="resetCart">Si, voglio continuare su questo ristorante.</button>
                     <button class="btn" @click="resetWarning">No, sto solo guardando.</button>
                 </div>
@@ -101,6 +103,27 @@ export default {
 <style lang="scss" scoped>
 @use '../assets/scss/_partial/variables' as *;
 
+.wave {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 50%;
+        height: 100%;
+        background: url(../assets/scss/img/onda1arancione.png) right;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+    .plants {
+        position: absolute;
+        left: -2.875rem;
+        bottom: -10px;
+        width: 308px;
+        height: 100%;
+        background: url(../assets/scss/img/basilico.png) no-repeat;
+        transform: rotate(-10deg);
+    }
+
 .card_info {
     background-color: $primary_color;
     box-shadow: 0px 0px 16px 0px black;
@@ -113,7 +136,7 @@ export default {
 }
 
 .menu {
-    margin-top: 85px;
+    margin-top: 110px;
 }
 
 img {
@@ -129,8 +152,9 @@ img {
     box-shadow: 0px 0px 16px 0px black;
     border-radius: 20px;
     background-color: rgba(255, 255, 255, 0.9);
-    top: 20%;
-    left: 23%;
+    top: 40%;
+    left: 25%;
+    right: 25%;
     height: 200px;
 }
 
@@ -156,6 +180,20 @@ button {
     img {
     height: 30%;
     max-width: 80%;
+}
+.pop_up {
+    height: 250px;
+    left: 10%;
+    right: 10%;
+}
+
+}
+@media (max-width: 540px) {
+    .pop_up {
+    height: 280px;
+    left: 5%;
+    right: 5%;
+    
 }
 
 }
