@@ -116,8 +116,14 @@ export default {
 
 <template>
     <div class="ms_card text-center">
-        <img v-if="data.img" :src="data.img" class="card-img-top" alt="...">
-        <img v-if="data.image" :src="data.image" class="card-img-top" alt="...">
+        <div class="position-relative">
+            <img v-if="data.img" :src="data.img" class="card-img-top" alt="...">
+            <img v-if="data.image" :src="data.image" class="card-img-top" alt="...">
+            <div class="position-absolute top-0 m-2">
+                <div v-if="data.vegan" class="badge rounded-pill text-bg-success me-1">vegan</div>
+                <div v-if="data.gluten_free" class="badge rounded-pill text-bg-secondary">gluten-free</div>
+            </div>
+        </div>
         <div class="card-body mt-1 p-1">
             <h5 class="card-title fw-bold mb-2">{{ data.name }}</h5>
             <div v-if="data.categories" class="overflow-x-auto mb-1">
@@ -127,12 +133,15 @@ export default {
             <div v-if="data.address">{{ data.address }} </div>
             <div class="mt-3 d-flex justify-content-center">
 
-                <button class="btn ms_btn text-white" v-if="data.restaurant_id && isInCart(data.id) === false" @click="addCart(data)">add
+                <button class="btn ms_btn text-white" v-if="data.restaurant_id && isInCart(data.id) === false"
+                    @click="addCart(data)">add
                     cart</button>
+
                 <button class="btn ms_btn text-white" v-if="!data.restaurant_id" @click="getIdRedirect('menu', data)">menu</button>
                 <button class="btn ms_btn text-white" v-if="data.restaurant_id && isInCart(data.id)" @click="lessFood(data)">-</button>
                 <span class="fs-4 mx-3" v-if="data.restaurant_id && isInCart(data.id)">{{getQuantity(data.id)}}</span>
                 <button class="btn ms_btn text-white" v-if="data.restaurant_id && isInCart(data.id)" @click="moreFood(data)">+</button>
+
 
             </div>
         </div>
@@ -143,22 +152,22 @@ export default {
 <style lang="scss" scoped>
 @use '../assets/scss/_partial/variables' as *;
 
-.ms_card{
+.ms_card {
     width: 288px;
 
     transition: all .2s ease-in-out;
-        -webkit-transition: all .2s ease-in-out;
-        -moz-transition: all .2s ease-in-out;
-        -ms-transition: all .2s ease-in-out;
-        -o-transition: all .2s ease-in-out;
+    -webkit-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    -ms-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
 
-        &:hover{
-            transform: scale(1.1);
-            -webkit-transform: scale(1.1);
-            -moz-transform: scale(1.1);
-            -ms-transform: scale(1.1);
-            -o-transform: scale(1.1)
-        }
+    &:hover {
+        transform: scale(1.1);
+        -webkit-transform: scale(1.1);
+        -moz-transform: scale(1.1);
+        -ms-transform: scale(1.1);
+        -o-transform: scale(1.1)
+    }
 }
 
 img {
@@ -194,6 +203,4 @@ img {
         width: 288px;
         height: 200px;
     }
-}
-
-</style>
+}</style>
