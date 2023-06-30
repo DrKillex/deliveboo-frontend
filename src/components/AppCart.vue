@@ -185,11 +185,11 @@ export default {
                             <div v-else class="fw-bold zero-article row"> Non hai nessun articolo nel carrello
                             </div>
                             <!-- /CARD -->
-                            
+
 
                             <!-- Tabella -->
 
-                            <table class="table" v-if="store.cart.length > 0">
+                            <!-- <table class="table" v-if="store.cart.length > 0">
 
                                 <thead>
                                     <tr>
@@ -219,7 +219,7 @@ export default {
                                 </tbody>
                             </table> -->
                             <!-- /Tabella -->
-                            <div class="fw-bold">Totale: {{ getFullPrice() }} €</div>
+                            <!-- <div class="fw-bold">Totale: {{ getFullPrice() }} €</div> -->
                         </div>
                         <!-- Ordina -->
                         <!-- <div class="buttons mt-4 row">
@@ -238,30 +238,29 @@ export default {
             </div>
             <!-- Header cart -->
             <div class="header-cart-resume p-2 row ms-0" v-if="store.cart.length > 0">
-                        <div class="col-sm-2 col-md-3 fw-bold total d-flex align-items-center">Totale: {{ getFullPrice() }} €</div>
-                        <div class="col-sm-10 col-md-9 buttons">
-                            <div class="header-cart-buttons d-flex justify-content-around align-items-center">
-                                <div class="button-left col-md-7 d-flex justify-content-center">
-                                    <router-link :to="{ name: 'payment' }">
-                                        <button v-if="store.cart.length > 1" class="fw-bold payment-btn btn">Procedi
-                                            all'ordine ({{
-                                                cartElementQuantity }}
-                                            articoli)</button>
-                                        <button v-else class="fw-bold payment-btn btn">Procedi all'ordine ({{
-                                            cartElementQuantity }}
-                                            articolo)</button>
-                                    </router-link>
-                                </div>
-                                <div class="button-right col-md-5 d-flex justify-content-center ms-3">
-                                    <button class="fw-bold align-items-center btn deleteproducts-btn"
-                                        @click.prevent="svuota()"><font-awesome-icon
-                                                                        icon="fa-solid fa-trash" /> Svuota
-                                        Carrello</button>
-                                </div>
-                            </div>
+                <div class="col-sm-2 col-md-3 fw-bold total d-flex align-items-center">Totale: {{ getFullPrice() }} €</div>
+                <div class="col-sm-10 col-md-9 buttons">
+                    <div class="header-cart-buttons d-flex justify-content-around align-items-center">
+                        <div class="button-left col-md-7 d-flex justify-content-center">
+                            <router-link :to="{ name: 'payment' }">
+                                <button v-if="store.cart.length > 1" class="fw-bold payment-btn btn">Procedi
+                                    all'ordine ({{
+                                        cartElementQuantity }}
+                                    articoli)</button>
+                                <button v-else class="fw-bold payment-btn btn">Procedi all'ordine ({{
+                                    cartElementQuantity }}
+                                    articolo)</button>
+                            </router-link>
+                        </div>
+                        <div class="button-right col-md-5 d-flex justify-content-center ms-3">
+                            <button class="fw-bold align-items-center btn deleteproducts-btn"
+                                @click.prevent="svuota()"><font-awesome-icon icon="fa-solid fa-trash" /> Svuota
+                                Carrello</button>
                         </div>
                     </div>
-                    <!-- /Header cart -->
+                </div>
+            </div>
+            <!-- /Header cart -->
             <!-- Form dentro Offcanvas -->
         </div>
         <!-- /Offcanvas -->
@@ -275,16 +274,20 @@ export default {
 
 .offcanvas {
     width: 600px;
-    .header-cart-resume{
+
+    .header-cart-resume {
         box-shadow: 1px -3px 2px 1px rgba(221, 221, 221, 0.7);
         z-index: 999;
         padding-top: 20px;
-        .total{
-                font-size: 17px;
-            }
+
+        .total {
+            font-size: 16px;
+        }
     }
+
     .offcanvas-header {
         position: relative;
+
         .btn-close {
             position: absolute;
             top: 1.25rem;
@@ -360,46 +363,55 @@ export default {
 
 
 
-@media screen and (max-width: 540px){
-    .offcanvas{
+@media screen and (max-width: 540px) {
+    .offcanvas {
         .buttons {
-            .btn{
+            .btn {
                 margin: 10px 0 0 0;
             }
         }
     }
 }
+
 // Media Query
 @media screen and (max-width: 760px) {
     .offcanvas {
         padding-bottom: 80px;
-        .offcanvas-header{
+
+        .offcanvas-header {
             font-size: 15px;
             padding: 10px;
+
             .btn-close {
-            top: .625rem;
-            right: .625rem;
-        }
-        .header-cart-resume{
-            .header-cart-buttons {
-                justify-content: space-around !important;
+                top: .625rem;
+                right: .625rem;
             }
-            .total{
-                font-size: 18px;
+
+            .header-cart-resume {
+                .header-cart-buttons {
+                    justify-content: space-around !important;
+                }
+
+                .total {
+                    font-size: 18px;
+                }
             }
-        }
+
             .btn-close::before {
-            bottom: 0;
-            left: -120px;
-        }
-            .offcanvas-title{
-                font-size: 20px; 
+                bottom: 0;
+                left: -120px;
             }
-            .btn{
-                font-size: 12px; 
+
+            .offcanvas-title {
+                font-size: 20px;
+            }
+
+            .btn {
+                font-size: 12px;
                 margin: 0;
             }
         }
+
         .card {
             img {
                 border-radius: 4%;
@@ -419,7 +431,7 @@ export default {
         }
 
         .buttons {
-            .btn{
+            .btn {
                 margin: 10px 0 0 0;
                 padding: 0.5rem 1rem;
                 font-size: 15px;

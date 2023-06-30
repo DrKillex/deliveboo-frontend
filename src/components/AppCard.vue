@@ -131,7 +131,7 @@ export default {
                     cart</button>
                 <button class="btn ms_btn text-white" v-if="!data.restaurant_id" @click="getIdRedirect('menu', data)">menu</button>
                 <button class="btn ms_btn text-white" v-if="data.restaurant_id && isInCart(data.id)" @click="lessFood(data)">-</button>
-                <span class="fs-4 mx-2" v-if="data.restaurant_id && isInCart(data.id)">{{getQuantity(data.id)}}</span>
+                <span class="fs-4 mx-3" v-if="data.restaurant_id && isInCart(data.id)">{{getQuantity(data.id)}}</span>
                 <button class="btn ms_btn text-white" v-if="data.restaurant_id && isInCart(data.id)" @click="moreFood(data)">+</button>
 
             </div>
