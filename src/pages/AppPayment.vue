@@ -7,7 +7,7 @@
                     <h4 class="card-header titleOrder" style="color:#555">Riepilogo dell'ordine</h4>
                     <ul class="card-body mb-0 list-unstyled">
                         <li class="card-text" v-for="food in store.cart">
-                            {{ food.name }} x {{ food.quantity }}
+                            {{ food.name }} x {{ food.quantity }} - {{ singleFoodPrice(food) }}€
                         </li>
                     </ul>
                     <div class="px-2">
@@ -161,6 +161,13 @@ export default {
 
 
     methods: {
+        singleFoodPrice(food) {
+            if (food.quantity > 1) {
+                return (parseFloat(food.price) * food.quantity).toFixed(2);
+            } else {
+                return food.price;
+            }
+        },
         setCart() {
             this.store.selectedRestaurant = JSON.parse(localStorage.getItem("chosenReastaurant")),
                 this.store.totalPrice = JSON.parse(localStorage.getItem("totalPrice")),
