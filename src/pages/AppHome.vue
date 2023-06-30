@@ -62,11 +62,13 @@ import axios from 'axios';
 <template>
 
     <AppJumbotron></AppJumbotron>
-    <!-- Carosello Immagini -->
-        <!-- <div class="appCarousel">        
+
+    <!-- Carosello Immagini
+        <div class="appCarousel">        
             <AppCarousel /> 
-        </div> -->
-    
+        </div>
+     -->
+
     <main>
        <section class=" d-flex flex-column flex-sm-row mt-2 container-md container-fluid mx-auto">
             <!-- Ricerca Categorie -->

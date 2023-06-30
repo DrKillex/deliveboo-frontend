@@ -14,6 +14,22 @@ export default {
         }
     },
     methods: {
+        getImgLink(item){
+            if(item.img){
+                if(!item.img.startsWith('http')){
+                    return 'http://127.0.0.1:8000/storage/'+item.img
+                } else {
+                    return item.img
+                }
+            }
+            if(item.image){
+                if(!item.image.startsWith('http')){
+                    return 'http://127.0.0.1:8000/storage/'+item.image
+                } else {
+                    return item.image
+                }
+            }
+        },
         getIdRedirect(where, who) {
             this.store.selectedRestaurant = who
 
@@ -117,8 +133,8 @@ export default {
 <template>
     <div class="ms_card text-center">
         <div class="position-relative">
-            <img v-if="data.img" :src="data.img" class="card-img-top" alt="...">
-            <img v-if="data.image" :src="data.image" class="card-img-top" alt="...">
+            <img v-if="data.img" :src="getImgLink(data)" class="card-img-top" alt="...">
+            <img v-if="data.image" :src="getImgLink(data)" class="card-img-top" alt="...">
             <div class="position-absolute top-0 m-2">
                 <div v-if="data.vegan" class="badge rounded-pill text-bg-success me-1">vegan</div>
                 <div v-if="data.gluten_free" class="badge rounded-pill text-bg-secondary">gluten-free</div>

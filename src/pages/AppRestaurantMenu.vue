@@ -14,6 +14,15 @@ export default {
         AppCard
     },
     methods: {
+        getImgLink(item){
+            if(item.img){
+                if(!item.img.startsWith('http')){
+                    return 'http://127.0.0.1:8000/storage/'+item.img
+                } else {
+                    return item.img
+                }
+            }
+        },
         getMenu() {
             axios.get(`${this.store.apiBaseUrl}${this.store.apiUrls.products}/${this.$route.params.slug}`)
                 .then((response) => {
@@ -43,7 +52,7 @@ export default {
         <div class="wave"></div>
         <div class="container position-relative">
             <div class="text-center">
-                <img class="rounded-2 mb-3" :src="store.products[0].restaurant.img" alt="">
+                <img class="rounded-2 mb-3" :src="getImgLink(store.products[0].restaurant)" alt="">
                 <h1>{{ store.products[0].restaurant.name }}</h1>
                 <div class="fs-5">{{ store.products[0].restaurant.description }}</div>
             </div>
@@ -80,7 +89,7 @@ export default {
             <div class="pop_up position-fixed" v-if="store.cartWarning === true">
                 <h5 class="p-3">Hai cambiato ristorante, vuoi continuare su questo ristorante e svuotare l
                     ordine precedente o no?</h5>
-                <div class="d-flex justify-content-center gap-5 mt-4">
+                <div class="d-flex justify-content-center gap-2 mt-4">
                     <button class="btn" @click="resetCart">Si, voglio continuare su questo ristorante.</button>
                     <button class="btn" @click="resetWarning">No, sto solo guardando.</button>
                 </div>
@@ -143,8 +152,9 @@ img {
     box-shadow: 0px 0px 16px 0px black;
     border-radius: 20px;
     background-color: rgba(255, 255, 255, 0.9);
-    top: 20%;
-    left: 23%;
+    top: 40%;
+    left: 25%;
+    right: 25%;
     height: 200px;
 }
 
@@ -170,6 +180,20 @@ button {
     img {
     height: 30%;
     max-width: 80%;
+}
+.pop_up {
+    height: 250px;
+    left: 10%;
+    right: 10%;
+}
+
+}
+@media (max-width: 540px) {
+    .pop_up {
+    height: 280px;
+    left: 5%;
+    right: 5%;
+    
 }
 
 }

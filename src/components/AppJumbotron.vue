@@ -23,8 +23,8 @@ export default {
         <!-- Background Jumbotron -->
         <div class="wave"></div>
         <div class="plants"></div>
-         <!-- /Background Jumbotron -->
-         <!-- Jumbotron Content -->
+        <!-- /Background Jumbotron -->
+        <!-- Jumbotron Content -->
         <div class="jumbotron-content">
             <!-- Carousel Autoplay -->
             <div id="carouselExampleAutoplaying" class="carousel carousel-dark slide" data-bs-ride="carousel">
@@ -48,7 +48,7 @@ export default {
                                 <!-- column right -->
                                 <div class="col-md-6 col-sm-12">
                                     <div class="column-content">
-                                        <img class="d-block w-100" src="../assets/scss/img/jumbotron_hamburger.png">
+                                        <img class="d-block img-jumbo" src="../assets/scss/img/jumbotron_hamburger.png">
                                     </div>
                                 </div>
                                 <!-- /column right -->
@@ -71,7 +71,7 @@ export default {
                                 <!-- column right -->
                                 <div class="col-md-6 col-sm-12">
                                     <div class="column-content">
-                                        <img class="d-block w-100" src="../assets/scss/img/sushi.png">
+                                        <img class="d-block img-jumbo" src="../assets/scss/img/sushi.png">
                                     </div>
                                 </div>
                                 <!-- /column right -->
@@ -94,7 +94,7 @@ export default {
                                 <!-- column right -->
                                 <div class="col-md-6 col-sm-12">
                                     <div class="column-content">
-                                        <img class="d-block w-100" src="../assets/scss/img/pizza.png">
+                                        <img class="d-block img-jumbo" src="../assets/scss/img/pizza.png">
                                     </div>
                                 </div>
                                 <!-- /column right -->
@@ -133,6 +133,7 @@ export default {
 
 .jumbotron {
     position: relative;
+
     .wave {
         position: absolute;
         top: 0;
@@ -162,8 +163,9 @@ export default {
             margin: 2.6rem 0;
             padding: 2.5rem 1.25rem;
 
-            img {
+            .img-jumbo {
                 object-fit: contain;
+                width: 100%;
             }
 
             .titles {
@@ -172,6 +174,7 @@ export default {
                     font-size: 3.75rem;
                     color: $fifth_color;
                 }
+
                 h4 {
                     font-size: 1.25rem;
                     color: $fourth_color;
@@ -183,11 +186,41 @@ export default {
 
 // Media Query
 @media screen and (max-width: 760px) {
+    .jumbotron {
+        .wave{
+            height: 80%;
+        }
+
+        .plants{
+            left: -2.875rem;
+            bottom: -30.75rem;
+        }
+        .jumbotron-content {
+            padding: 50px 0 50px 0;
+            .column-content {
+                display: flex;
+                justify-content: center;
+                padding: 0;
+                .img-jumbo{
+                    width: 70%;
+                    transform: translate(0, -65px);
+                }
+                .titles {
+                    h1 {
+                        font-size: 38px;
+                    }
+                    h4{
+                        font-size: 18px;
+                    }
+                }
+            }
+        }
+    }
+
     .search-bar {
         width: 100%;
-        transform: translate(3px, -100px);
+        transform: translate(3px, -105px);
 
     }
-}
-</style>
+}</style>
 

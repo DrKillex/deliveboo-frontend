@@ -14,6 +14,15 @@ export default {
     },
     methods: {
         //carrello
+        getImgLink(item){
+            if(item.image){
+                if(!item.image.startsWith('http')){
+                    return 'http://127.0.0.1:8000/storage/'+item.image
+                } else {
+                    return item.image
+                }
+            }
+        },
         moreFood(food) {
             const newCart = this.store.cart.map((product) => {
                 if (product.id === food.id) {
@@ -148,7 +157,7 @@ export default {
                                 <div class="row  g-0">
                                     <!-- immagine prodotto -->
                                     <div class="img-box col-sm-12 col-md-4">
-                                        <img :src="product.image" alt="">
+                                        <img :src="getImgLink(product)" alt="">
                                     </div>
                                     <!-- /immagine prodotto -->
                                     <div class="col-md-8">

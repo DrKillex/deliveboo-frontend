@@ -12,8 +12,7 @@
                     </ul>
                     <div class="px-2">
                         <button class="btn btn-warning text-start" type="button" data-bs-toggle="offcanvas"
-                            data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">Modifica
-                            ordine</button>
+                            data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">Apri carrello</button>
                     </div>
                     <span class="ps-3 my-3">Totale: {{ this.store.totalPrice }}€</span>
                 </div>
