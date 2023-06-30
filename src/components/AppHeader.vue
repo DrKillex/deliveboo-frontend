@@ -75,7 +75,7 @@ export default {
     top: 0;
     background-color: $third_color;
     color: $primary_color;
-    z-index: 99;
+    z-index: 999;
 
     .navbar-links {
         margin-bottom: 0;
