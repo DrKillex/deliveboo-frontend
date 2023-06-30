@@ -24,8 +24,8 @@ export default {
                 this.store.selectedCategories.push(id)
             }
         },
-        emptyCategories(){
-            this.store.selectedCategories=[]
+        emptyCategories() {
+            this.store.selectedCategories = []
         }
     }
 }
@@ -35,16 +35,17 @@ export default {
 <template>
     <div>
         <!-- Bottoni Categorie  -->
-        <div class="mt-3 text-center">
-            <div class="mx-3 ms_text_category">Tutte le categorie</div>
+        <div class="">
+            <div class="ms_text_category">Tutte le categorie</div>
             <!-- Tasto Reset -->
             <button class="ms_btn text-white mb-3" @click="emptyCategories"> Reset </button>
+            <!-- Categorie -->
             <ul class="list-unstyled justify-content-center text-center flex-wrap d-flex position-relative">
                 <li v-bind:class="{ active: store.selectedCategories.includes(category.id) }"
-                    class="btn m-sm-3 my-1 mx-3 ms_card text-white" v-for="category in store.categories"
+                    class="btn d-flex justify-content-evenly align-items-center flex-column m-sm-3 my-1 mx-3 ms_card text-white" v-for="category in store.categories"
                     @click="$emit('search'); addCategory(category.id)">
                     <div>{{ category.name }}</div>
-                    <img src="../assets/img/italiano.webp" alt="asd">
+                    <img class="text-center" :src="category.img" alt="immagine categoria">
                 </li>
             </ul>
         </div>
@@ -78,6 +79,7 @@ div.mt-3 ul.list-unstyled.justify-content-center li.active {
     box-shadow: 0px 0px 26px -2px #000000;
     border: none;
 }
+
 .ms_card {
     height: 130px;
     width: 170px;
@@ -85,26 +87,27 @@ div.mt-3 ul.list-unstyled.justify-content-center li.active {
     background-color: $primary_color;
 
     transition: all .2s ease-in-out;
-        -webkit-transition: all .2s ease-in-out;
-        -moz-transition: all .2s ease-in-out;
-        -ms-transition: all .2s ease-in-out;
-        -o-transition: all .2s ease-in-out;
+    -webkit-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    -ms-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
 
     &:hover {
         background-color: #faa856;
         box-shadow: 0px 0px 26px -2px #000000;
 
         transform: scale(1.1);
-            -webkit-transform: scale(1.1);
-            -moz-transform: scale(1.2);
-            -ms-transform: scale(1.1);
-            -o-transform: scale(1.1)
+        -webkit-transform: scale(1.1);
+        -moz-transform: scale(1.2);
+        -ms-transform: scale(1.1);
+        -o-transform: scale(1.1)
     }
-}
 
-img {
-        width: 130px;
+    img {
+        width: 100px;
     }
+
+}
 
 @media (max-width: 768px) {
     .ms_btn {
