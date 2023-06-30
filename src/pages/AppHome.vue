@@ -74,7 +74,7 @@ import axios from 'axios';
                 <SelectCategory @search="search" />
             </div>
             <!--Card Ristoranti -->
-            <div class="ms_cards d-flex gap-5 flex-wrap col-sm-8 col-md-9 justify-content-center">
+            <div class="ms_cards d-flex gap-5 flex-wrap col-sm-8 col-md-9 justify-content-center align-content-start">
                 <AppCard v-for="restaurant in search()" :data="restaurant" />
             </div>
         </section>

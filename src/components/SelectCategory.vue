@@ -24,6 +24,9 @@ export default {
                 this.store.selectedCategories.push(id)
             }
         },
+        emptyCategories(){
+            this.store.selectedCategories=[]
+        }
     }
 }
 </script>
@@ -35,7 +38,7 @@ export default {
         <div class="mt-3 text-center">
             <div class="mx-3 ms_text_category">Tutte le categorie</div>
             <!-- Tasto Reset -->
-            <button class="ms_btn text-white mb-3"> Reset </button>
+            <button class="ms_btn text-white mb-3" @click="emptyCategories"> Reset </button>
             <ul class="list-unstyled justify-content-center text-center flex-wrap d-flex position-relative">
                 <li v-bind:class="{ active: store.selectedCategories.includes(category.id) }"
                     class="btn m-sm-3 my-1 mx-3 ms_card text-white" v-for="category in store.categories"
