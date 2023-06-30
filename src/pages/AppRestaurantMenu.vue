@@ -14,6 +14,15 @@ export default {
         AppCard
     },
     methods: {
+        getImgLink(item){
+            if(item.img){
+                if(!item.img.startsWith('http')){
+                    return 'http://127.0.0.1:8000/storage/'+item.img
+                } else {
+                    return item.img
+                }
+            }
+        },
         getMenu() {
             axios.get(`${this.store.apiBaseUrl}${this.store.apiUrls.products}/${this.$route.params.slug}`)
                 .then((response) => {
@@ -41,7 +50,7 @@ export default {
     <section class="menu">
         <div class="container position-relative">
             <div class="text-center">
-                <img class="rounded-2 mb-3" :src="store.products[0].restaurant.img" alt="">
+                <img class="rounded-2 mb-3" :src="getImgLink(store.products[0].restaurant)" alt="">
                 <h1>{{ store.products[0].restaurant.name }}</h1>
                 <div class="fs-5">{{ store.products[0].restaurant.description }}</div>
             </div>
