@@ -141,8 +141,8 @@ export default {
             </div>
         </div>
         <div class="card-body mt-1 p-1">
-            <h5 class="card-title fw-bold mb-2">{{ data.name }}</h5>
-            <div v-if="data.categories" class="overflow-x-auto mb-1">
+            <h5 class="card-title fw-bold mb-2 mt-2">{{ data.name }}</h5>
+            <div v-if="data.categories" class="overflow-x-auto">
                 <span class="ir-badge me-1 " v-for="category in data.categories">{{ category.name }}</span>
             </div>
             <div v-if="data.price">{{ data.price }}€</div>
@@ -150,10 +150,9 @@ export default {
             <div class="mt-3 d-flex justify-content-center">
 
                 <button class="btn ms_btn text-white" v-if="data.restaurant_id && isInCart(data.id) === false"
-                    @click="addCart(data)">add
-                    cart</button>
+                    @click="addCart(data)">Aggiungi All'ordine</button>
 
-                <button class="btn ms_btn text-white" v-if="!data.restaurant_id" @click="getIdRedirect('menu', data)">menu</button>
+                <button class="btn ms_btn text-white" v-if="!data.restaurant_id" @click="getIdRedirect('menu', data)">Menù</button>
                 <button class="btn ms_btn text-white" v-if="data.restaurant_id && isInCart(data.id)" @click="lessFood(data)">-</button>
                 <span class="fs-4 mx-3" v-if="data.restaurant_id && isInCart(data.id)">{{getQuantity(data.id)}}</span>
                 <button class="btn ms_btn text-white" v-if="data.restaurant_id && isInCart(data.id)" @click="moreFood(data)">+</button>
