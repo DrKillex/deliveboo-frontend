@@ -35,7 +35,7 @@ export default {
 <template>
     <div>
         <!-- Bottoni Categorie  -->
-        <div class="">
+        <div>
             <div class="ms_text_category">Tutte le categorie</div>
             <!-- Tasto Reset -->
             <button class="ms_btn text-white mb-3" @click="emptyCategories"> Reset </button>
@@ -73,7 +73,7 @@ export default {
     }
 }
 
-div.mt-3 ul.list-unstyled.justify-content-center li.active {
+div ul.list-unstyled.justify-content-center li.active {
     font-weight: bold;
     background-color: #faa856;
     box-shadow: 0px 0px 26px -2px #000000;
