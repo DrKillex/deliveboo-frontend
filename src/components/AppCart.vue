@@ -170,13 +170,13 @@ export default {
                                             <p class="card-text"><small class="text-body-secondary">Quantità: {{
                                                 product.quantity }}
                                                     <ul class="list-unstyled d-flex gap-2 mt-3">
-                                                        <li><button class="btn orange"
+                                                        <li><button class="ms_btn"
                                                                 @click.prevent="lessFood(product)">-</button>
                                                         </li>
-                                                        <li><button class="btn orange"
+                                                        <li><button class="ms_btn"
                                                                 @click.prevent="moreFood(product)">+</button>
                                                         </li>
-                                                        <li><button class="btn  orange"
+                                                        <li><button class="ms_btn"
                                                                 @click.prevent="removeFood(product)"><font-awesome-icon
                                                                     icon="fa-solid fa-trash" /> Rimuovi</button></li>
                                                     </ul>
@@ -226,7 +226,7 @@ export default {
             </form>
         </div>
         <!-- Parte Inferiore -->
-        <div class="header-cart-resume p-2 row ms-0" v-if="store.cart.length > 0">
+        <div class="header-cart-resume p-2 py-3 row ms-0" v-if="store.cart.length > 0">
             <div class="col-sm-2 col-md-3 fw-bold total d-flex align-items-center">Totale: {{ getFullPrice() }} €</div>
             <div class="col-sm-10 col-md-9 buttons">
                 <div class="header-cart-buttons d-flex justify-content-around align-items-center">
@@ -296,7 +296,7 @@ export default {
     }
 
     .card:not(:first-child) {
-        margin-top: 50px;
+        margin-top: 30px;
     }
 
     .card {
@@ -324,11 +324,19 @@ export default {
     }
 }
 
-.orange {
+.ms_btn {
     border-radius: 3rem;
     background-color: $primary_color;
-    color: white;
+    color: $third_color;
     padding: 0.1rem 0.5rem;
+    border: none;
+
+    &:hover {
+        background-color: #faa856;
+        box-shadow: 0px 0px 2px 0px #faa856;
+        color: $third_color;
+    }
+    
 }
 
 .buttons {

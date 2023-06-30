@@ -48,6 +48,8 @@ export default {
 
 <template>
     <section class="menu">
+        <div class="plants"></div>
+        <div class="wave"></div>
         <div class="container position-relative">
             <div class="text-center">
                 <img class="rounded-2 mb-3" :src="getImgLink(store.products[0].restaurant)" alt="">
@@ -101,6 +103,27 @@ export default {
 <style lang="scss" scoped>
 @use '../assets/scss/_partial/variables' as *;
 
+.wave {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 50%;
+        height: 100%;
+        background: url(../assets/scss/img/onda1arancione.png) right;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+    .plants {
+        position: absolute;
+        left: -2.875rem;
+        bottom: -10px;
+        width: 308px;
+        height: 100%;
+        background: url(../assets/scss/img/basilico.png) no-repeat;
+        transform: rotate(-10deg);
+    }
+
 .card_info {
     background-color: $primary_color;
     box-shadow: 0px 0px 16px 0px black;
@@ -113,7 +136,7 @@ export default {
 }
 
 .menu {
-    margin-top: 85px;
+    margin-top: 110px;
 }
 
 img {
