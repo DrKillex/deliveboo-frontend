@@ -36,7 +36,7 @@ export default {
                                 <div class="col-md-6 col-sm-12">
                                     <div class="column-content">
                                         <div class="titles">
-                                            <h1>BLA BLA BLA</h1>
+                                            <h1>Il bello è prenderci gusto</h1>
                                             <h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis
                                                 necessitatibus quo praesentium? Cumque delectus, minus quo ullam accusantium
                                                 sunt praesentium in id commodi voluptate dolor. Consequuntur impedit placeat
@@ -62,11 +62,8 @@ export default {
                                 <div class="col-md-6 col-sm-12">
                                     <div class="column-content">
                                         <div class="titles">
-                                            <h1>BLA BLA BLA</h1>
-                                            <h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis
-                                                necessitatibus quo praesentium? Cumque delectus, minus quo ullam accusantium
-                                                sunt praesentium in id commodi voluptate dolor. Consequuntur impedit placeat
-                                                sit hic.</h4>
+                                            <h1>I piatti che ami, a domicilio.</h1>
+                                            <h4>Ordina online dai tuoi ristoranti preferiti.</h4>
                                         </div>
                                     </div>
                                 </div>
@@ -89,10 +86,7 @@ export default {
                                     <div class="column-content">
                                         <div class="titles">
                                             <h1>BLA BLA BLA</h1>
-                                            <h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis
-                                                necessitatibus quo praesentium? Cumque delectus, minus quo ullam accusantium
-                                                sunt praesentium in id commodi voluptate dolor. Consequuntur impedit placeat
-                                                sit hic.</h4>
+                                            <h4>I più famosi, i più buoni, i preferiti. Quelli che trovi solo su Food For All.</h4>
                                         </div>
                                     </div>
                                 </div>
