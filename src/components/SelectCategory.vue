@@ -159,6 +159,7 @@ img {
             margin-bottom: 20px;
             display: flex;
             justify-content: center;
+            
         }
     }
 
