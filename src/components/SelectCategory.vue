@@ -36,18 +36,18 @@ export default {
     <div>
         <!-- Bottoni Categorie  -->
         <div>
+
             <div class="header-category d-flex  pe-4 mb-3">
                 <div class="mx-3 ms_text_category fs-3 fw-bold">Tutte le categorie</div>
                 <!-- Tasto Reset -->
                 <button class="ms_btn mt-sm-3 mb-3 reset" @click="emptyCategories"> Resetta </button>
             </div>
-            <ul
-                class="list-unstyled justify-content-start ms_overflow text-center flex-sm-wrap d-flex position-relative gap-3">
+            <ul class="list-unstyled justify-content-start ms_overflow text-center flex-sm-wrap d-flex position-relative gap-3">
                 <li v-bind:class="{ active: store.selectedCategories.includes(category.id) }"
-                    class="btn my-md-3 my-sm-2 ms_card text-white" v-for="category in store.categories"
+                    class="btn d-flex justify-content-evenly align-items-center flex-column m-sm-3 my-1 mx-3 ms_card text-white" v-for="category in store.categories"
                     @click="$emit('search'); addCategory(category.id)">
                     <div>{{ category.name }}</div>
-                    <img src="../assets/img/italiano.webp" alt="asd">
+                    <img class="text-center" :src="category.img" alt="immagine categoria">
                 </li>
             </ul>
         </div>
@@ -78,7 +78,9 @@ export default {
     }
 }
 
+
 div ul.list-unstyled.justify-content-start li.active {
+
     font-weight: bold;
     background-color: #faa856;
     box-shadow: 0px 0px 26px -2px #000000;
@@ -107,10 +109,13 @@ div ul.list-unstyled.justify-content-start li.active {
         -ms-transform: scale(1.1);
         -o-transform: scale(1.1)
     }
-}
 
-img {
-    width: 130px;
+
+    img {
+        width: 100px;
+    }
+
+
 }
 
 @media (max-width: 768px) {

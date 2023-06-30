@@ -43,12 +43,12 @@ export default {
 	width: 70%;
 
 	.search {
-		background-color: $secondary_color;
+		background-color: $third_color;
 		border-radius: 3rem;
 		padding: 1.2rem 1rem;
 		display: flex;
 
-		// box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
+		box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
 		.search-content {
 			display: flex;
 			flex-grow: 1;
@@ -58,7 +58,7 @@ export default {
 				margin: 0 1.1rem;
 				outline: none;
 				border: none;
-				background-color: $secondary_color;
+				background-color: $third_color;
 			}
 
 			.icon {
