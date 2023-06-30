@@ -5,12 +5,17 @@
             <div class="col-12 col-md-6 mb-4">
                 <div class="card">
                     <h4 class="card-header titleOrder" style="color:#555">Riepilogo dell'ordine</h4>
-                    <ul class="card-body mb-0">
+                    <ul class="card-body mb-0 list-unstyled">
                         <li class="card-text" v-for="food in store.cart">
                             {{ food.name }} x {{ food.quantity }}
                         </li>
                     </ul>
-                    <span class="ps-3 mb-3">Totale: {{ this.store.totalPrice }}€</span>
+                    <div class="px-2">
+                        <button class="btn btn-warning text-start" type="button" data-bs-toggle="offcanvas"
+                            data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">Modifica
+                            ordine</button>
+                    </div>
+                    <span class="ps-3 my-3">Totale: {{ this.store.totalPrice }}€</span>
                 </div>
             </div>
             <!-- informazioni consegna ordine -->
@@ -27,11 +32,13 @@
                         <form @submit="HandlePayPostRedirectOrder" class="d-flex flex-column">
                             <div class="form-group my-2">
                                 <label>Nome</label>
-                                <input type="text" v-model="name" class="form-control" placeholder="Inserisci Nome" required>
+                                <input type="text" v-model="name" class="form-control" placeholder="Inserisci Nome"
+                                    required>
                             </div>
                             <div class="form-group my-2">
                                 <label>surname</label>
-                                <input type="text" v-model="surname" class="form-control" placeholder="Inserisci cognome" required>
+                                <input type="text" v-model="surname" class="form-control" placeholder="Inserisci cognome"
+                                    required>
                             </div>
                             <div class="form-group my-2">
                                 <label>Indirizzo di consegna</label>
@@ -40,7 +47,8 @@
                             </div>
                             <div class="form-group my-2">
                                 <label>email</label>
-                                <input type="email" v-model="email" class="form-control" placeholder="Inserisci email" required>
+                                <input type="email" v-model="email" class="form-control" placeholder="Inserisci email"
+                                    required>
                             </div>
                             <div class="form-group">
                                 <div class="row">
@@ -56,7 +64,7 @@
                                     </div> -->
                                 </div>
                             </div>
-                         <!-- form in cui inserisci dati pagamento  -->
+                            <!-- form in cui inserisci dati pagamento  -->
                             <hr />
                             <h4 class="titlepayment">Informazioni pagamento</h4>
                             <hr />
@@ -88,10 +96,14 @@
 <script>
 import axios from 'axios';
 import braintree from 'braintree-web';
+import AppCart from '../components/AppCart.vue';
 import { store } from '../store';
 
 export default {
     name: "AppPayment",
+    components: {
+        AppCart,
+    },
     data() {
         return {
             store,
@@ -101,8 +113,8 @@ export default {
             name: '',
             address: '',
             error: '',
-            surname:'',
-            email:'',
+            surname: '',
+            email: '',
         };
     },
 
@@ -145,15 +157,15 @@ export default {
             })
             .catch(err => {
             });
-            this.refreshPage()
+        this.refreshPage()
     },
 
 
     methods: {
-        setCart(){
+        setCart() {
             this.store.selectedRestaurant = JSON.parse(localStorage.getItem("chosenReastaurant")),
-            this.store.totalPrice = JSON.parse(localStorage.getItem("totalPrice")),
-            this.store.cart = JSON.parse(localStorage.getItem("cart"))
+                this.store.totalPrice = JSON.parse(localStorage.getItem("totalPrice")),
+                this.store.cart = JSON.parse(localStorage.getItem("cart"))
             // console.log(localStorage.getItem("chosenReastaurant") + '-----------', localStorage.getItem("cart") + '-----------')
             console.log(this.store.selectedRestaurant + '-----------test', this.store.cart + '-----------')
         },
@@ -170,20 +182,20 @@ export default {
                         console.error(err);
                         this.error = err.message;
                     })
-                    .then(()=>{
+                    .then(() => {
                         this.paymentResponse()
                     })
             }
         },
-        refreshPage(){
-            if (JSON.parse(localStorage.getItem("pageReloaded")===null)){
-                localStorage.setItem("pageReloaded",1)
+        refreshPage() {
+            if (JSON.parse(localStorage.getItem("pageReloaded") === null)) {
+                localStorage.setItem("pageReloaded", 1)
                 this.$router.go(0);
             } else {
                 localStorage.removeItem("pageReloaded")
             }
         },
-        paymentResponse(){
+        paymentResponse() {
             const data = {
                 cart: this.store.cart,
                 nonce: this.nonce,
@@ -198,9 +210,9 @@ export default {
             axios.post(this.store.apiBaseUrl + this.store.apiUrls.payment, data)
                 .then((response) => {
                     console.log(response)
-                    if (response.data.success===true){
+                    if (response.data.success === true) {
                         this.store.cart = [],
-                        localStorage.clear();
+                            localStorage.clear();
                         this.store.cartWarning = false
                     }
                 }
@@ -211,9 +223,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.section-payment{
+.section-payment {
     margin-top: 100px;
-    .input-pay{
+
+    .input-pay {
         height: 40px;
     }
 }
