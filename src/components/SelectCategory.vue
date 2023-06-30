@@ -40,7 +40,7 @@ export default {
             <!-- Tasto Reset -->
             <button class="ms_btn text-white mb-3" @click="emptyCategories"> Reset </button>
             <!-- Categorie -->
-            <ul class="list-unstyled justify-content-center text-center flex-wrap d-flex position-relative">
+            <ul class="list-unstyled text-center flex-wrap d-flex position-relative">
                 <li v-bind:class="{ active: store.selectedCategories.includes(category.id) }"
                     class="btn d-flex justify-content-evenly align-items-center flex-column m-sm-3 my-1 mx-3 ms_card text-white" v-for="category in store.categories"
                     @click="$emit('search'); addCategory(category.id)">
