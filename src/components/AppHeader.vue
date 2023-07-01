@@ -45,7 +45,7 @@ export default {
                 </ul>
                 <div class="logo d-flex align-items-center mx-3">
                     <router-link :to="{ name: 'home' }" class="link d-flex align-items-center text-decoration-none">
-                        <img src="../assets/scss/img/logo.png" alt="Logo" width="100" class="d-inline-block align-text-top">
+                        <img src="../assets/img/logo.png" alt="Logo" width="100" class="d-inline-block align-text-top">
                         <h1 class="mb-0 fw-bold d-none d-sm-block">FOOD FOR ALL</h1>
                     </router-link>
                 </div>
@@ -84,7 +84,7 @@ export default {
 
         li {
             list-style-type: none;
-            margin-left: 1.5rem;
+            // margin-left: 1.5rem;
             font-size: 1.2rem;
             padding-right: 20px;
         }
@@ -126,8 +126,9 @@ export default {
             // /animazione comparsa menu hamburger
             li {
                 margin-bottom: 2rem;
+                margin-left: 1.5rem;
                 padding-right: 60px;
-
+                
                 a {
                     font-size: 20px;
                 }

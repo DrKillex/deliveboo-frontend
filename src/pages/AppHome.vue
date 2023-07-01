@@ -70,7 +70,7 @@ import axios from 'axios';
      -->
 
     <main>
-       <section class=" d-flex flex-column flex-sm-row mt-2 container-md container-fluid mx-auto">
+       <section class="pb-4 d-flex flex-column flex-sm-row mt-2 container-md container-fluid mx-auto">
             <!-- Ricerca Categorie -->
             <div class="category col-sm-4 col-md-3 d-md-fle">
                 <SelectCategory @search="search" />
@@ -86,10 +86,9 @@ import axios from 'axios';
 </template>
 
 <style  lang="scss" scoped>
-.category{
-    padding-right: 90px;
+.ms_cards{
+    padding-top: 92px;
 }
-
 @media (max-width: 768px) {
     .appCarousel{
         display: none;
@@ -101,6 +100,9 @@ import axios from 'axios';
 
     .ms_cards {
         justify-content: center;
+        transform: translate(0, -65px);
+        padding-top: 0;
+
     }
     .category{
     padding-right: 0;

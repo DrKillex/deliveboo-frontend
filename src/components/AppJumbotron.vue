@@ -37,10 +37,7 @@ export default {
                                     <div class="column-content">
                                         <div class="titles">
                                             <h1>Il bello è prenderci gusto</h1>
-                                            <h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis
-                                                necessitatibus quo praesentium? Cumque delectus, minus quo ullam accusantium
-                                                sunt praesentium in id commodi voluptate dolor. Consequuntur impedit placeat
-                                                sit hic.</h4>
+                                            <h4>Ordina online dai tuoi ristoranti preferiti</h4>
                                         </div>
                                     </div>
                                 </div>
@@ -48,7 +45,7 @@ export default {
                                 <!-- column right -->
                                 <div class="col-md-6 col-sm-12">
                                     <div class="column-content">
-                                        <img class="d-block img-jumbo" src="../assets/scss/img/jumbotron_hamburger.png">
+                                        <img class="d-block img-jumbo" src="../assets/img/jumbotron_hamburger.png">
                                     </div>
                                 </div>
                                 <!-- /column right -->
@@ -62,8 +59,9 @@ export default {
                                 <div class="col-md-6 col-sm-12">
                                     <div class="column-content">
                                         <div class="titles">
-                                            <h1>I piatti che ami, a domicilio.</h1>
-                                            <h4>Ordina online dai tuoi ristoranti preferiti.</h4>
+                                            <h1>
+                                                Prenota i migliori ristoranti per ogni occasione </h1>
+                                            <h4>A casa tua con Food-For-All</h4>
                                         </div>
                                     </div>
                                 </div>
@@ -71,7 +69,7 @@ export default {
                                 <!-- column right -->
                                 <div class="col-md-6 col-sm-12">
                                     <div class="column-content">
-                                        <img class="d-block img-jumbo" src="../assets/scss/img/sushi.png">
+                                        <img class="d-block img-jumbo" src="../assets/img/sushi.png">
                                     </div>
                                 </div>
                                 <!-- /column right -->
@@ -85,8 +83,9 @@ export default {
                                 <div class="col-md-6 col-sm-12">
                                     <div class="column-content">
                                         <div class="titles">
-                                            <h1>BLA BLA BLA</h1>
-                                            <h4>I più famosi, i più buoni, i preferiti. Quelli che trovi solo su Food For All.</h4>
+                                            <h1>Il bello è prenderci gusto</h1>
+                                            <h4>I più famosi, i più buoni, i preferiti. Quelli che trovi solo su Food For
+                                                All.</h4>
                                         </div>
                                     </div>
                                 </div>
@@ -94,7 +93,7 @@ export default {
                                 <!-- column right -->
                                 <div class="col-md-6 col-sm-12">
                                     <div class="column-content">
-                                        <img class="d-block img-jumbo" src="../assets/scss/img/pizza.png">
+                                        <img class="d-block img-jumbo" src="../assets/img/pizza.png">
                                     </div>
                                 </div>
                                 <!-- /column right -->
@@ -140,7 +139,7 @@ export default {
         right: 0;
         width: 50%;
         height: 100%;
-        background: url(../assets/scss/img/onda1arancione.png) right;
+        background: url(../assets/img/onda1arancione.png) right;
         background-size: cover;
         background-repeat: no-repeat;
     }
@@ -151,7 +150,7 @@ export default {
         bottom: -10px;
         width: 308px;
         height: 100%;
-        background: url(../assets/scss/img/basilico.png) no-repeat;
+        background: url(../assets/img/basilico.png) no-repeat;
         transform: rotate(-10deg);
     }
 
@@ -169,14 +168,15 @@ export default {
             }
 
             .titles {
+
                 h1 {
                     text-transform: uppercase;
-                    font-size: 3.75rem;
+                    font-size: 3.25rem;
                     color: $fifth_color;
                 }
 
                 h4 {
-                    font-size: 1.25rem;
+                    font-size: 1.5rem;
                     color: $fourth_color;
                 }
             }
@@ -187,30 +187,39 @@ export default {
 // Media Query
 @media screen and (max-width: 760px) {
     .jumbotron {
-        .wave{
+        .wave {
             height: 80%;
         }
 
-        .plants{
+        .plants {
             left: -2.875rem;
-            bottom: -30.75rem;
+            bottom: -25.75rem;
         }
+
         .jumbotron-content {
             padding: 50px 0 50px 0;
+            height: 35.5rem;
+
             .column-content {
                 display: flex;
                 justify-content: center;
                 padding: 0;
-                .img-jumbo{
+
+                .img-jumbo {
                     width: 70%;
                     transform: translate(0, -65px);
                 }
+
                 .titles {
+                    text-align: center;
+
                     h1 {
                         font-size: 38px;
                     }
-                    h4{
+
+                    h4 {
                         font-size: 18px;
+                        color: rgb(65, 65, 65);
                     }
                 }
             }
@@ -219,7 +228,7 @@ export default {
 
     .search-bar {
         width: 100%;
-        transform: translate(3px, -105px);
+        transform: translate(0, -90px);
 
     }
 }</style>

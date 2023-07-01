@@ -47,7 +47,7 @@ export default {
 
 
 <template>
-    <section class="menu">
+    <section class="menu pb-4">
         <div class="plants"></div>
         <div class="wave"></div>
         <div class="container position-relative">
@@ -149,7 +149,7 @@ img {
 
 .pop_up {
     border: 5px solid $primary_color;
-    box-shadow: 0px 0px 16px 0px black;
+    box-shadow: 0px 0px 16px 0px rgb(255, 255, 255);
     border-radius: 20px;
     background-color: rgba(255, 255, 255, 0.9);
     top: 40%;

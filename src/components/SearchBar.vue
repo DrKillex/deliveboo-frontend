@@ -19,7 +19,7 @@ export default {
 			<div class="search-content">
 				<div>
 					<!-- search icon -->
-					<img class="icon w-100" src="../assets/scss/img/search-icon.jpg" alt="">
+					<img class="icon w-100" src="../assets/img/search-icon.jpg" alt="">
 				</div>
 				<input type="text" v-model="store.searchBarText" @change="$emit('searchText')" list="restaurants"
 					placeholder="Cerca Ristorante">

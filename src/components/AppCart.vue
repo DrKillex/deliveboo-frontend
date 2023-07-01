@@ -127,8 +127,8 @@ export default {
 <template>
     <!-- Offcanvas -->
     <div class="d-flex">
-        <button class="btn border-0 fs-6 p-0 border-dark-subtle mx-2" type="button" data-bs-toggle="offcanvas"
-            data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions"><font-awesome-icon
+        <button class="btn border-0 fs-6 p-0 border-dark-subtle mx-2 d-flex align-items-center" type="button" data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions"><span class="fs-5 d-block d-md-none text-black me-2"> Carrello </span> <font-awesome-icon
                 icon="fa-solid fa-cart-shopping" /></button>
         <!-- quantità -->
         <div>{{ cartElementQuantity }}</div>
@@ -264,7 +264,8 @@ export default {
     width: 600px !important;
 
     .header-cart-resume {
-        box-shadow: 1px -3px 2px 1px rgba(221, 221, 221, 0.7);
+        // box-shadow: 1px -3px 2px 1px rgba(221, 221, 221, 0.7);
+        border-top: 2px solid rgba(221, 221, 221, 0.7);
         z-index: 999;
         padding-top: 20px;
 
@@ -425,15 +426,6 @@ export default {
                 }
             }
         }
-
-        .buttons {
-            .btn {
-                margin: 10px 0 0 0;
-                padding: 0.5rem 1rem;
-                font-size: 15px;
-            }
-        }
-
     }
 
 }
