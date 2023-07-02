@@ -53,7 +53,7 @@ export default {
         <div class="container position-relative">
             <div class="text-center">
                 <img class="rounded-2 mb-3" :src="getImgLink(store.products[0].restaurant)" alt="">
-                <h1>{{ store.products[0].restaurant.name }}</h1>
+                <h1 class="fw-bold">{{ store.products[0].restaurant.name }}</h1>
                 <div class="fs-5">{{ store.products[0].restaurant.description }}</div>
             </div>
             <!-- Info ristorante -->
@@ -79,7 +79,7 @@ export default {
             </div>
             <!-- /Info ristorante -->
         </div>
-        <h2 class="text-center mt-4">Menù</h2>
+        <h2 class="text-center mt-4 fw-bold">Menù</h2>
         <div class="container mt-5 d-flex gap-5 flex-wrap justify-content-center">
             <!-- Card prodotti -->
             <AppCard v-for="product in store.products" :data="product" />
@@ -109,9 +109,10 @@ export default {
         right: 0;
         width: 50%;
         height: 100%;
-        background: url(../assets/scss/img/onda1arancione.png) right;
+        background: url(../assets/img/onda1arancione.png) right;
         background-size: cover;
         background-repeat: no-repeat;
+        z-index: -1
     }
 
     .plants {
@@ -120,7 +121,7 @@ export default {
         bottom: -10px;
         width: 308px;
         height: 100%;
-        background: url(../assets/scss/img/basilico.png) no-repeat;
+        background: url(../assets/img/basilico.png) no-repeat;
         transform: rotate(-10deg);
     }
 

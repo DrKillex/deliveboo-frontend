@@ -80,8 +80,7 @@ import axios from 'axios';
                 <AppCard v-for="restaurant in search()" :data="restaurant" />
             </div>
         </section>
-        <!--/Sezione Ristoranti -->
-
+        <!--/Sezione Ristoranti -->       
     </main>
 </template>
 
