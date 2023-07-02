@@ -26,6 +26,7 @@ export default {
         },
         emptyCategories() {
             this.store.selectedCategories = []
+            this.store.searchBarText = ''
         }
     }
 }

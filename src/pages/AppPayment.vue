@@ -225,6 +225,9 @@ export default {
                     }
                 }
                 )
+                .catch(err => {
+                        swal("Pagamento rifiutato", "Il tuo ordine non è stato effetuato", "error");
+                    })
         }
     },
 };
