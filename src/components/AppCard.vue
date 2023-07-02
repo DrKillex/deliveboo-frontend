@@ -204,6 +204,9 @@ img {
 }
 
 @media (max-width: 768px) {
+    .ms_card{
+        width: calc(100%/2 - 50px);
+    }
     img {
         border-radius: 20px;
         width: 210px;
@@ -213,6 +216,9 @@ img {
 }
 
 @media (max-width: 540px) {
+    .ms_card{
+        width: 100%;
+    }
     img {
         border-radius: 20px;
         width: 288px;

@@ -87,7 +87,7 @@ export default {
 
             <!-- Pop Up Cambia ristorante -->
             <div class="pop_up position-fixed" v-if="store.cartWarning === true">
-                <h5 class="p-3">Hai cambiato ristorante, vuoi continuare su questo ristorante e svuotare l'ordine precedente o no?</h5>
+                <h5 class="p-3 text-center">Hai cambiato ristorante, vuoi continuare su questo ristorante e svuotare l'ordine precedente o no?</h5>
                 <div class="d-flex justify-content-center gap-2 mt-4">
                     <button class="btn" @click="resetCart">Si, voglio continuare su questo ristorante.</button>
                     <button class="btn" @click="resetWarning">No, sto solo guardando.</button>
