@@ -88,6 +88,10 @@ export default {
             font-size: 1.2rem;
             padding-right: 20px;
         }
+        
+        a:hover{
+            color: $primary_color;
+        }
 
         a {
             text-decoration: none;

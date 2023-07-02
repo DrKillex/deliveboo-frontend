@@ -1,10 +1,10 @@
 <template>
-    <div class="container">
+    <div class="container pb-4">
         <div class="row section-payment">
             <!-- riepilogo carrello  -->
             <div class="col-12 col-md-6 mb-4">
                 <div class="card">
-                    <h4 class="card-header titleOrder" style="color:#555">Riepilogo dell'ordine</h4>
+                    <h4 class="card-header titleOrder">Riepilogo dell'ordine</h4>
                     <ul class="card-body mb-0 list-unstyled">
                         <li class="card-text" v-for="food in store.cart">
                             {{ food.name }} x {{ food.quantity }}
@@ -20,7 +20,7 @@
             <!-- informazioni consegna ordine -->
             <div class="col-12 col-md-6 container-cc-info m-0">
                 <div class="card color-sal">
-                    <h4 class="card-header titlepayment">Informazioni consegna</h4>
+                    <h4 class="card-header titlepayment">Informazioni di consegna</h4>
                     <div class="card-body">
                         <!-- <div class="alert alert-success" v-if="nonce">
                             Successfully generated nonce.
@@ -35,8 +35,8 @@
                                     required>
                             </div>
                             <div class="form-group my-2">
-                                <label>surname</label>
-                                <input type="text" v-model="surname" class="form-control" placeholder="Inserisci cognome"
+                                <label>Cognome</label>
+                                <input type="text" v-model="surname" class="form-control" placeholder="Inserisci Cognome"
                                     required>
                             </div>
                             <div class="form-group my-2">
@@ -54,7 +54,7 @@
                                     <div class="col-6 my-2">
                                         <label>Numero di telefono</label>
                                         <input type="text" v-model="phone_number" class="form-control"
-                                            placeholder="numero di telefono">
+                                            placeholder="Numero di telefono">
                                     </div>
                                     <!-- <div class="col-6 d-flex flex-column justify-content-between d-none">
                                         <label>Totale</label>
@@ -65,16 +65,16 @@
                             </div>
                             <!-- form in cui inserisci dati pagamento  -->
                             <hr />
-                            <h4 class="titlepayment">Informazioni pagamento</h4>
+                            <h4 class="titlepayment">Informazioni di pagamento</h4>
                             <hr />
                             <div class="form-group">
-                                <label>Credit Card Number</label>
+                                <label>Numero della carta</label>
                                 <div id="creditCardNumber" class="form-control input-pay my-1"></div>
                             </div>
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-6">
-                                        <label>Expire Date</label>
+                                        <label>Data di scadenza</label>
                                         <div id="expireDate" class="form-control input-pay my-1"></div>
                                     </div>
                                     <div class="col-6">
@@ -83,7 +83,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <button class="btn btn-primary btn-block" @click.prevent="payWithCreditCard">paga</button>
+                            <button class="border-0 btn-paga btn-block" @click.prevent="payWithCreditCard">Paga</button>
 
                         </form>
                     </div>
@@ -224,11 +224,39 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@use '../assets/scss/_partial/variables' as *;
+
 .section-payment {
     margin-top: 100px;
+    .card{
+        .card-header{
+            border-radius: 10px 10px 0 0;
+        }
+        border-radius: 10px;
+    }
 
+    .card-header{
+        background-color: $primary_color;
+        color: $third_color;
+    }
+
+    input, .input-pay{
+        border: 1px solid rgb(189, 189, 189);
+        box-shadow: none !important;
+    }
     .input-pay {
         height: 40px;
     }
+}
+.btn-paga{
+    background-color: $primary_color;
+    color: $third_color;
+    padding: 10px 0;
+}
+
+.btn-paga:hover{
+    background-color: $primary_color;
+    color: $third_color;
+    font-weight: bold;
 }
 </style>

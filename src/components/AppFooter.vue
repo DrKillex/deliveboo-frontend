@@ -6,7 +6,7 @@ export default {
 
 
 <template>
-    <section class="footer py-4">
+    <section class="footer py-5">
         <div class="container">
             <div class="row">
                 <div class="col-md-3 col-sm-6 col-6">
