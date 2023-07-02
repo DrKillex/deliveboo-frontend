@@ -132,6 +132,9 @@ export default {
 
 .jumbotron {
     position: relative;
+    h1{
+        font-weight: bold;
+    }
 
     .wave {
         position: absolute;
