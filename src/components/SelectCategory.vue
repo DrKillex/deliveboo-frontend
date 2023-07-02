@@ -40,7 +40,7 @@ export default {
             <div class="header-category d-flex justify-content-center mb-3">
                 <div class="mx-3 ms_text_category fs-3 fw-bold">Tutte le categorie</div>
                 <!-- Tasto Reset -->
-                <button class="ms_btn mt-sm-3 mb-3 reset" @click="emptyCategories"> Resetta </button>
+                <button class="ms_btn mt-sm-3 mb-3 reset me-3" @click="emptyCategories"> Resetta </button>
             </div>
             <ul class="list-unstyled justify-content-start ms_overflow text-center flex-sm-wrap d-flex position-relative">
                 <li v-bind:class="{ active: store.selectedCategories.includes(category.id) }"
