@@ -13,8 +13,12 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faUserSecret } from '@fortawesome/free-solid-svg-icons'
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons'; 
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import { faFacebookF } from '@fortawesome/free-brands-svg-icons';
+import { faInstagram } from '@fortawesome/free-brands-svg-icons';
+import { faTwitter } from '@fortawesome/free-brands-svg-icons';
 /* add icons to the library - inserire qui le icone */
-library.add(faUserSecret, faCartShopping,faTrash)
+library.add(faUserSecret, faCartShopping,faTrash,faMagnifyingGlass, faFacebookF, faInstagram, faTwitter)
 
 import App from './App.vue'
 
