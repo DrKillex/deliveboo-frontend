@@ -8,19 +8,19 @@ import SearchBar from '../components/SearchBar.vue';
 import AppJumbotron from '../components/AppJumbotron.vue';
 import AppCarousel from '../components/AppCarousel.vue';
 import axios from 'axios';
-    export default {
-        name: "AppHome",
-        components: {
-            AppCard,
-            AppJumbotron,
-            SelectCategory,
-            SearchBar,
-            AppCarousel
-        },
-        data() {
-          return {
-              store,
-         }
+export default {
+    name: "AppHome",
+    components: {
+        AppCard,
+        AppJumbotron,
+        SelectCategory,
+        SearchBar,
+        AppCarousel
+    },
+    data() {
+        return {
+            store,
+        }
     },
     methods: {
         getData() {
@@ -60,7 +60,6 @@ import axios from 'axios';
 
 
 <template>
-
     <AppJumbotron></AppJumbotron>
 
     <!-- Carosello Immagini
@@ -70,26 +69,43 @@ import axios from 'axios';
      -->
 
     <main>
-       <section class="pb-4 d-flex flex-column flex-sm-row mt-2 container-md container-fluid mx-auto">
+        <section class="pb-4 d-flex flex-column flex-sm-row mt-2 container-md container-fluid mx-auto">
             <!-- Ricerca Categorie -->
             <div class="category col-sm-4 col-md-3 d-md-fle">
                 <SelectCategory @search="search" />
             </div>
-            <!--Card Ristoranti -->
-            <div class="ms_cards mt-4 d-flex gap-5 flex-wrap col-sm-8 col-md-9 justify-content-center align-content-start">
-                <AppCard v-for="restaurant in search()" :data="restaurant" />
+
+
+            <div class="restaurants col-sm-8 col-md-9 ms-0">
+                <div class="mx-3 ms-md-5 d-flex justify-content-center">
+                    <div class="titles">
+                        <h3 class="fw-bold f-3 mb-3">Elenco Ristoranti</h3>
+                        <p class="fs-5 mb-0 text-center">Scegli il tuo ristorante</p>
+                    </div>
+                </div>
+                <div class="ms_cards mt-4 d-flex gap-5 flex-wrap justify-content-center align-content-start">
+                    <AppCard v-for="restaurant in search()" :data="restaurant" />
+
+                </div>
+                <!-- <h1>Ristoranti</h1> -->
+                <!--Card Ristoranti -->
+                <!-- <div
+                    class="ms_cards mt-4 d-flex gap-5 flex-wrap col-sm-8 col-md-9 justify-content-center align-content-start">
+                    <AppCard v-for="restaurant in search()" :data="restaurant" />
+                </div> -->
             </div>
         </section>
-        <!--/Sezione Ristoranti -->       
+        <!--/Sezione Ristoranti -->
     </main>
 </template>
 
 <style  lang="scss" scoped>
-.ms_cards{
-    padding-top: 92px;
+.ms_cards {
+    padding-top: 20px;
 }
+
 @media (max-width: 768px) {
-    .appCarousel{
+    .appCarousel {
         display: none;
     }
 }
@@ -97,15 +113,24 @@ import axios from 'axios';
 
 @media (max-width: 540px) {
 
+    .restaurants {
+        transform: translate(0, -65px);
+
+    }
+
     .ms_cards {
         justify-content: center;
-        transform: translate(0, -65px);
+        // transform: translate(0, -65px);
         padding-top: 0;
 
     }
-    .category{
-    padding-right: 0;
-}
-}
 
+    .category {
+        padding-right: 0;
+    }
+
+    .ms-md-5{
+        justify-content: flex-start !important;
+    }
+}
 </style>
