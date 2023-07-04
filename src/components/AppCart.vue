@@ -128,7 +128,7 @@ export default {
     <!-- Offcanvas -->
     <div class="d-flex">
         <button class="btn border-0 fs-6 p-0 border-dark-subtle mx-2 d-flex align-items-center" type="button" data-bs-toggle="offcanvas"
-            data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions"><span class="fs-5 d-block d-md-none text-black me-2"> Carrello </span> <font-awesome-icon
+            data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions"><span class="carrello fs-5 text-black me-2"> Carrello </span> <font-awesome-icon
                 icon="fa-solid fa-cart-shopping" /></button>
         <!-- quantità -->
         <div>{{ cartElementQuantity }}</div>
@@ -136,9 +136,9 @@ export default {
     </div>
     <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasWithBothOptions"
         aria-labelledby="offcanvasWithBothOptionsLabel">
+        <!-- Parte superiore  Offcanvas -->
         <div class="offcanvas-header">
             <div class="row">
-                <!-- Parte superiore  Offcanvas -->
                 <div class="d-flex">
                     <h5 class="offcanvas-title fw-bold flex-grow-1" id="offcanvasWithBothOptionsLabel">Il tuo ordine
                     </h5>
@@ -146,6 +146,7 @@ export default {
                 </div>
             </div>
         </div>
+        <!-- /Parte superiore  Offcanvas -->
         <!-- Card dentro Offcanvas -->
         <div class="offcanvas-body" id="offcanvas" data-bs-scroll="true">
             <form class="row g-3">
@@ -259,7 +260,9 @@ export default {
 <style lang="scss" scoped>
 @use '../assets/scss/_partial/variables' as *;
 
-
+.carrello{
+        display: none;
+    }
 .offcanvas {
     width: 600px !important;
 
@@ -371,7 +374,11 @@ export default {
 }
 
 // Media Query
-@media screen and (max-width: 760px) {
+@media screen and (max-width: 768px) {
+
+    .carrello{
+        display: block;
+    }
     .offcanvas {
         padding-bottom: 80px;
 
