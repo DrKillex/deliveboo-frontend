@@ -46,7 +46,7 @@ export default {
                 <div class="logo d-flex align-items-center mx-3">
                     <router-link :to="{ name: 'home' }" class="link d-flex align-items-center text-decoration-none">
                         <img src="../assets/img/logo.png" alt="Logo" width="100" class="d-inline-block align-text-top">
-                        <h1 class="mb-0 fw-bold d-none d-sm-block">FOOD FOR ALL</h1>
+                        <h1 class="mb-0 fw-bold d-none d-sm-flex">FOOD FOR ALL</h1>
                     </router-link>
                 </div>
                 <!-- /navbar collegamenti -->

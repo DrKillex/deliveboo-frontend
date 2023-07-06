@@ -32,7 +32,6 @@ export default {
                 )
         },
         search() {
-            console.log('ciao')
             if (this.store.searchBarText.trim() !== '' && this.store.selectedCategories.length > 0) {
                 return this.store.restaurants.filter((res) => {
                     if (this.store.selectedCategories.every((cat) => res.categories.map(categories => categories.id).includes(cat))) {
