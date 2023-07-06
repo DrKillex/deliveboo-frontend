@@ -32,7 +32,6 @@ export default {
                 )
         },
         search() {
-            console.log('ciao')
             if (this.store.searchBarText.trim() !== '' && this.store.selectedCategories.length > 0) {
                 return this.store.restaurants.filter((res) => {
                     if (this.store.selectedCategories.every((cat) => res.categories.map(categories => categories.id).includes(cat))) {
@@ -80,7 +79,7 @@ export default {
                 <div class="mx-3 ms-md-5 d-flex justify-content-center">
                     <div class="titles">
                         <h3 class="fw-bold f-3 mb-3">Elenco Ristoranti</h3>
-                        <p class="fs-5 mb-0 text-center">Scegli il tuo ristorante</p>
+                        <p class="fs-5 mb-0 ps-sm-0 ps-3">I migliori ristoranti con consegna a domicilio</p>
                     </div>
                 </div>
                 <div class="ms_cards mt-4 d-flex gap-5 flex-wrap justify-content-center align-content-start">
@@ -104,10 +103,20 @@ export default {
     padding-top: 20px;
 }
 
+.titles{
+    h3{
+        text-align: center;
+    }
+    p{
+        text-align: center;
+    }
+}
+
 @media (max-width: 768px) {
     .appCarousel {
         display: none;
     }
+    
 }
 
 
@@ -117,6 +126,16 @@ export default {
         transform: translate(0, -65px);
 
     }
+
+    .titles{
+    h3{
+        text-align: start;
+    }
+    p{
+        text-align: start;
+        padding: 0 !important;
+    }
+}
 
     .ms_cards {
         justify-content: center;
